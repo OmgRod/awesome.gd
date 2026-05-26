@@ -1,0 +1,27 @@
+{
+  "columns": [
+    {
+      "title": "Navigation",
+      "links": [
+        { "label": "Home", "url": "/" },
+        { "label": "Geode", "url": "/geode/index" },
+        { "label": "Reverse Engineering", "url": "/reversing" },
+        { "label": "Servers", "url": "/servers" },
+        { "label": "Miscellaneous", "url": "/misc" }
+      ]
+    },
+    {
+      "title": "Socials",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/OmgRod" },
+        { "label": "AwesomeGD Repository", "url": "https://github.com/OmgRod/awesome.gd" },
+        { "label": "YouTube", "url": "https://www.youtube.com/@OmgRodYT" },
+        { "label": "X / Twitter", "url": "https://x.com/0mgRod" },
+        { "label": "Discord", "url": "https://discord.gg/vK3DuqJwyW" },
+        { "label": "Email", "url": "mailto:rod@omgrod.me" }
+      ]
+    }
+  ],
+  "tagLine": "Written for GD modders, hobbyists, and gamers.",
+  "copyright": "© {{year}} OmgRod. All rights reserved.<br>Made with MiniWiki by OmgRod."
+}

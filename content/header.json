@@ -1,0 +1,6 @@
+{
+  "links": [
+    { "title": "Home", "path": "/" },
+    { "title": "Official Guides", "path": "/guides" }
+  ]
+}

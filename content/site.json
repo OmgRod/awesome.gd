@@ -1,0 +1,36 @@
+{
+  "siteName": "AwesomeGD",
+  "siteDescription": "Awesome Geometry Dash documentation & tools",
+  "titleSuffix": "AwesomeGD",
+  "faviconPath": "/favicon.png",
+  "branding": {
+    "display": "logo-and-text",
+    "logoPath": "/favicon.png",
+    "logoAlt": "Geometry Dash logo",
+    "text": "AwesomeGD",
+    "logoClassName": "h-7 w-auto"
+  },
+  "wikiPreset": "docs",
+  "defaultTemplate": "default",
+  "header": {
+    "showSearch": true,
+    "showDarkModeToggle": true,
+    "searchPlaceholder": "Search..."
+  },
+  "pageTemplates": {
+    "enabled": true,
+    "defaultTemplate": "default"
+  },
+  "editPage": {
+    "enabled": true,
+    "provider": "github",
+    "repository": "OmgRod/awesome.gd",
+    "branch": "main",
+    "contentPath": "content",
+    "text": "Edit this page"
+  },
+  "layout": {
+    "maxWidthClass": "max-w-7xl",
+    "sidebarWidthClass": "md:w-72"
+  }
+}

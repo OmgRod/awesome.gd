@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "title": "Overview",
+      "collapsible": false,
+      "items": [
+        { "title": "Home", "path": "/" }
+      ]
+    },
+    {
+      "title": "Official Guides",
+      "collapsible": true,
+      "items": [
+      ]
+    },
+    {
+      "title": "Geode SDK",
+      "collapsible": true,
+      "items": [
+        { "title": "Table of Contents", "path": "/geode/index" },
+        { "title": "Official Docs", "path": "https://docs.geode-sdk.org" }
+      ]
+    },
+    {
+      "title": "Reverse Engineering",
+      "collapsible": true,
+      "items": [
+        { "title": "Home", "path": "/" }
+      ]
+    },
+    {
+      "title": "GD Servers",
+      "collapsible": true,
+      "items": [
+        { "title": "Home", "path": "/" }
+      ]
+    },
+    {
+      "title": "Miscellaneous",
+      "collapsible": true,
+      "items": [
+        { "title": "Home", "path": "/" }
+      ]
+    }
+  ]
+}
