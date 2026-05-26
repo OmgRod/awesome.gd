@@ -2,16 +2,10 @@
   "sections": [
     {
       "title": "Overview",
-      "collapsible": false,
-      "items": [
-        { "title": "Home", "path": "/" }
-      ]
-    },
-    {
-      "title": "Official Guides",
       "collapsible": true,
       "items": [
-        { "title": "Table of Contents", "path": "/guides/index" }
+        { "title": "Home", "path": "/" },
+        { "title": "Guides", "path": "/guides" }
       ]
     },
     {
@@ -19,28 +13,39 @@
       "collapsible": true,
       "items": [
         { "title": "Table of Contents", "path": "/geode/index" },
-        { "title": "Official Docs", "path": "https://docs.geode-sdk.org" }
+        { "title": "Official Guides", "path": "/geode/guides/index" }
       ]
     },
     {
       "title": "Reverse Engineering",
       "collapsible": true,
       "items": [
-        { "title": "Table of Contents", "path": "/reversing/index" }
+        { "title": "Table of Contents", "path": "/reversing/index" },
+        { "title": "Official Guides", "path": "/reversing/guides/index" }
       ]
     },
     {
       "title": "GD Servers",
       "collapsible": true,
       "items": [
-        { "title": "Table of Contents", "path": "/servers/index" }
+        { "title": "Table of Contents", "path": "/servers/index" },
+        { "title": "Official Guides", "path": "/servers/guides/index" }
+      ]
+    },
+    {
+      "title": "Savefiles",
+      "collapsible": true,
+      "items": [
+        { "title": "Table of Contents", "path": "/savefiles/index" },
+        { "title": "Official Guides", "path": "/savefiles/guides/index" }
       ]
     },
     {
       "title": "Miscellaneous",
       "collapsible": true,
       "items": [
-        { "title": "Table of Contents", "path": "/misc/index" }
+        { "title": "Table of Contents", "path": "/misc/index" },
+        { "title": "Official Guides", "path": "/misc/guides/index" }
       ]
     }
   ]

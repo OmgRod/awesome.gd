@@ -21,6 +21,7 @@ import SearchBar from './SearchBar';
 import Sidebar from './Sidebar';
 import Steps from './Steps';
 import Tabs, { Tab, TabPanels } from './Tabs';
+import GuidesTable from './GuidesTable';
 import Table, { Caption, TBody, TD, TH, THead, TR } from './WikiTable';
 import {
   AreaChart,
@@ -34,6 +35,7 @@ import {
 import { FormulaList, MathEquation, MathSteps, UnitConverter } from './math';
 import { CompoundBreakdown, ElementCard, PeriodicTable } from './science';
 import { Flashcards, Poll, Quiz } from './interactive';
+import Link from 'next/link';
 
 const mdxComponents = {
   Accordion,
@@ -63,12 +65,14 @@ const mdxComponents = {
   Icon,
   Infobox,
   Kbd,
+  Link,
   MathEquation,
   MathSteps,
   PeriodicTable,
   Poll,
   ProgressRingChart,
   PresetSearch,
+  GuidesTable,
   Quiz,
   SearchBar,
   Sidebar,

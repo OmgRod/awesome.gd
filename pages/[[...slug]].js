@@ -19,6 +19,7 @@ const {
   getAllRoutes,
   getFilePathFromSlugSegments,
   getPageMetaIndex,
+  getDirectoryPageMeta,
 } = require('../lib/content');
 const {
   getHeaderConfig,
@@ -305,8 +306,14 @@ export async function getStaticProps({ params }) {
     siteDefaultTemplate;
   const templateKey = pageTemplatesEnabled ? data.template || fallbackTemplate : fallbackTemplate;
 
+  const guides = relativePath === 'geode/guides/index.mdx'
+    ? getDirectoryPageMeta('geode/guides', { exclude: ['index'] })
+    : [];
+
   const mdxSource = await serialize(content, {
     parseFrontmatter: false,
+    scope: { guides },
+    blockJS: false,
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [

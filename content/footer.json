@@ -7,6 +7,7 @@
         { "label": "Geode", "url": "/geode/index" },
         { "label": "Reverse Engineering", "url": "/reversing/index" },
         { "label": "Servers", "url": "/servers/index" },
+        { "label": "Savefiles", "url": "/savefiles/index" },
         { "label": "Miscellaneous", "url": "/misc/index" }
       ]
     },
