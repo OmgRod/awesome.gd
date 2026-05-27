@@ -257,6 +257,10 @@ You may add the songs in your mod by updating the `mod.json`:
 
 Inside the music.zip should be every song in your mod (if you want to learn how to zip files, google it 😊).
 
+Now, you may be asking: "Why the HELL do we need to put a bunch of songs in a zip file??". And that's an excellent question! The reason why we do this is to save mod filesize since the Geode index has pretty small filesize limits (250Mb). Although 250Mb might not seem like a large amount, if you have enough songs and levels in your mod, you will easily exceed this limit.
+
+You can also try the [online song download](https://github.com/OmgRod/GD-Surge/blob/5a3d6be3635d40f4993e4b0e3d21425c28b233e7/src/modify/MenuLayer.cpp#L71-L185) method but a full explanation for this in this tutorial would take a while to write. 😟
+
 ### Unzipping the songs
 
 To unzip the songs, write the following code (straight from GD Surge):
