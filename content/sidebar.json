@@ -5,7 +5,9 @@
       "collapsible": true,
       "items": [
         { "title": "Home", "path": "/" },
-        { "title": "Guides", "path": "/guides" }
+        { "title": "Guides", "path": "/guides" },
+        { "title": "Contributing", "path": "/contributing" },
+        { "title": "Credits", "path": "/credits" }
       ]
     },
     {
@@ -13,7 +15,10 @@
       "collapsible": true,
       "items": [
         { "title": "Table of Contents", "path": "/geode/index" },
-        { "title": "Official Guides", "path": "/geode/guides/index" }
+        { "title": "Official Guides", "path": "/geode/guides/index" },
+        { "title": "Fangame Guide", "collapsible": true, "items": [
+          { "title": "1: Custom Levels", "path": "/geode/guides/fangame/chap1" }
+        ]}
       ]
     },
     {

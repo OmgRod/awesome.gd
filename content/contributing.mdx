@@ -1,0 +1,93 @@
+---
+title: Contributing
+description: Awesome Geometry Dash documentation & tools
+author: OmgRod
+editPage: true
+---
+
+# Contributing Guidelines
+
+Before you contribute to GD Resources, there are a few things you should know:
+
+<Steps>
+    <Step>
+        We use GitHub to host this website's code, so you should <Link href="https://github.com/signup">create an account</Link>.
+    </Step>
+    <Step>
+        Add yourself as an author in `content/authors.json`, like this:
+        ```json
+        {
+            "YourUsername": {
+                "name": "YourUsername",
+                "avatar": "YourAvatarUrl", // you can upload your own avatar to `public/assets/avatars`
+                "url": "YourPortfolioOrProfile.com"
+            }
+        }
+        ```
+    </Step>
+    <Step>
+        If you are creating a new category/subcategory, ensure it contains **at least** the following files:
+        
+        1. `index.mdx`
+        2. `guides/index.mdx`
+    </Step>
+</Steps>
+
+## Category file templates
+
+### `index.mdx`
+
+```mdx
+---
+title: [CATEGORY NAME] - Table of Contents
+description: [CATEGORY NAME] tutorials
+editPage: true
+---
+
+# [CATEGORY NAME]: Table of Contents
+
+<Link href="/[CATEGORY PATH]/guides/index">View official guides here</Link>
+
+## Useful Resources
+
+<Table>
+  <THead>
+    <TR>
+      <TH>Resource</TH>
+      <TH>Developer</TH>
+      <TH>Description</TH>
+    </TR>
+  </THead>
+  <TBody>
+    <TR>
+      <TH><Link href="[RESOURCE URL]">[RESOURCE NAME]</Link></TH>
+      <TH><Link href="[DEVELOPER GITHUB/PORTFOLIO]">[DEVELOPER NAME]</Link></TH>
+      <TH>[DESCRIPTION]</TH>
+    </TR>
+  </TBody>
+</Table>
+```
+
+You may add *more* rows by cloning the `<TR>` tag and pasting it below the closing `</TR>` tag.
+
+### `guides/index.mdx`
+
+```mdx
+---
+title: [CATEGORY NAME] - Guides
+description: [CATEGORY NAME] official guides
+editPage: true
+---
+
+# [CATEGORY NAME]: Guides
+
+## Sub-categories
+
+<GuidesTable subdirectory="[CATEGORY PATH]/guides/[SUBCATEGORY PATH]" caption="[SUBCATEGORY NAME]" />
+
+## Individual Guides
+
+<GuidesTable guides={guides} />
+```
+
+Sub-categories are **optional**. If no sub-categories are present, remove the two subtitles and the `GuidesTable` in between.

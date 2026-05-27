@@ -126,7 +126,6 @@ export default function PeriodicTable(props = {}) {
   const animationRef = useRef(null);
   const elementMapRef = useRef(new Map());
 
-  // Use getElementGrid to properly filter and highlight elements
   const elements = getElementGrid(PERIODIC_ELEMENTS, highlighted, includeSymbols);
 
   const subsetActive = normalizeSymbolList(includeSymbols).length > 0;
@@ -171,7 +170,6 @@ export default function PeriodicTable(props = {}) {
 
     ctx.scale(dpr, dpr);
 
-    // Build element map for hover detection
     const elementMap = new Map();
 
     const drawElement = (element, isHovered = false) => {
@@ -183,7 +181,6 @@ export default function PeriodicTable(props = {}) {
       let drawX = x;
       let drawY = y;
 
-      // If hovered, scale up from the element's center
       if (isHovered) {
         drawSize = cellSize * hoverScale;
         drawX = x + cellSize / 2 - drawSize / 2;
@@ -196,10 +193,9 @@ export default function PeriodicTable(props = {}) {
       let borderColor = isDark ? colorPair.dark : colorPair.light;
       const textColor = isDark ? '#e2e8f0' : '#1e293b';
 
-      // Highlight styling
       if (element.highlighted) {
-        bgColor = '#fbbf24'; // Golden highlight
-        borderColor = '#ea580c'; // Orange border
+        bgColor = '#fbbf24';
+        borderColor = '#ea580c';
       }
 
       ctx.fillStyle = bgColor;
@@ -208,10 +204,9 @@ export default function PeriodicTable(props = {}) {
       ctx.fillRect(drawX, drawY, drawSize, drawSize);
       ctx.strokeRect(drawX, drawY, drawSize, drawSize);
 
-      // Draw text with pixelated upscaling on hover
       const prevImageSmoothing = ctx.imageSmoothingEnabled;
       if (isHovered) {
-        ctx.imageSmoothingEnabled = false; // Disable smoothing for pixelated effect
+        ctx.imageSmoothingEnabled = false;
       }
 
       ctx.fillStyle = textColor;
@@ -242,7 +237,6 @@ export default function PeriodicTable(props = {}) {
 
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-    // Draw all non-hovered elements
     elements.forEach((element) => {
       const col = element.group - 1;
       const row = element.period - 1;
@@ -255,7 +249,6 @@ export default function PeriodicTable(props = {}) {
       }
     });
 
-    // Draw hovered element on top
     if (hoveredElement) {
       drawElement(hoveredElement, true);
     }
@@ -264,7 +257,6 @@ export default function PeriodicTable(props = {}) {
     setScale(cellSize);
   }, [elements, isDark, shouldShowNames, hoveredElement, hoverScale]);
 
-  // Hover animation
   useEffect(() => {
     if (!hoveredElement) {
       setHoverScale(1);
@@ -290,7 +282,6 @@ export default function PeriodicTable(props = {}) {
     };
   }, [hoveredElement]);
 
-  // Mouse move handler
   const handleCanvasMouseMove = (e) => {
     const canvas = canvasRef.current;
     if (!canvas) return;

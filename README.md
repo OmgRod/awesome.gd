@@ -1,4 +1,4 @@
-# AwesomeGD
+# GD Resources
 
 This repository contains guides and resources for modding Geometry Dash.
 
@@ -6,7 +6,7 @@ This repository contains guides and resources for modding Geometry Dash.
 
 ### Regular Usage
 
-Open AwesomeGD at https://awesomegd.omgrod.me
+Open GD Resources at https://gdresources.omgrod.me
 
 ### Developer Usage
 

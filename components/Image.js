@@ -22,7 +22,8 @@ export default function geImage({
   const useFill = enforceAspect && (!width || !height);
   const useNativeImg = !useFill && (!width || !height);
   const wrapperStyle = {
-    width: typeof width === 'number' ? `${width}px` : width || '100%',
+    width: typeof width === 'number' ? `${width}px` : width || 'auto',
+    maxWidth: '100%',
     aspectRatio: useFill ? aspect : undefined,
     ...style,
   };
@@ -30,14 +31,14 @@ export default function geImage({
   return (
     <figure className="my-6">
       <div
-        className={`relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950 ${className}`.trim()}
+        className={`relative overflow-hidden ${className}`.trim()}
         style={wrapperStyle}
       >
         {useNativeImg ? (
           <img
             src={normalizedSrc}
             alt={alt}
-            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+            style={{ width: 'auto', height: 'auto', maxWidth: '100%', objectFit: 'contain' }}
             {...props}
           />
         ) : (

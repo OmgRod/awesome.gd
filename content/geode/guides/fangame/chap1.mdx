@@ -1,0 +1,254 @@
+---
+title: Custom Levels
+description: Replace the current main levels with custom levels (and custom music)
+author: OmgRod
+editPage: true
+---
+
+# Chapter 1: Custom Levels
+
+<Callout>
+    A lot of the code in the following tutorial comes from <Link href="https://github.com/OmgRod/GD-Surge">GD Surge</Link> by OmgRod (which parts of it come from other existing GD fangames like Lunar and Odyssey), so credit to the developers of these mods for writing this code!
+</Callout>
+
+## Prerequisites
+
+- <Link href="https://geode-sdk.org/mods/omgrod.rods-fangame-tools">Rod's Fangame Tools</Link> (Geode mod)
+- <Link href="https://docs.geode-sdk.org/getting-started/sdk">Geode SDK</Link>
+- A PC (mobile could work but it's really annoying)
+- Permission to use certain songs (if applicable)
+
+*A YouTube tutorial for this is coming very soon... 👀*
+
+## Creating custom savefiles (CRITICAL)
+
+Before we even start messing with the GD main levels, we MUST create custom savefiles for the specific mod (to prevent getting leaderboard banned). To do this, we hook `GManager` to ensure the savefile that is created/loaded has a *slightly* different name:
+
+```cpp
+#include <Geode/Geode.hpp>
+#include <Geode/modify/GManager.hpp>
+
+using namespace geode::prelude;
+
+class $modify(MyGManager, GManager) {
+    void setup() {
+        auto compare = std::string(m_fileName);
+        compare.insert(std::string_view(compare).find(".dat"), "[YOUR FANGAME NAME PREFERABLY WITHOUT SPACES/SPECIAL CHARACTERS]");
+        m_fileName = compare;
+        GManager::setup();
+    }
+};
+```
+
+## How does GD get its main levels?
+
+GD gets its main level metadata from the <Link href="https://github.com/OmgRod/GD-Surge/blob/master/src/modify/LevelTools.cpp#L105-L229">`LevelTools::getLevel`</Link> function and the actual level strings from the <Link href="https://github.com/OmgRod/GD-Surge/blob/master/src/modify/LocalLevelManager.cpp#L5-L14">`LocalLevelManager::getMainLevelString`</Link> function.
+
+## Okay, so now how do we replace the levels with our own ones?
+
+It's really simple! Geode allows you to <Link href="https://docs.geode-sdk.org/tutorials/modify">hook</Link> (modify) classes and functions. If we hook these two classes, we can change how vanilla GD gets its levels!
+
+But, before we do this, we need to find a way to get our levels in the game in the first place.
+
+### Getting level strings
+
+Using <Link href="https://geode-sdk.org/mods/omgrod.rods-fangame-tools">Rod's Fangame Tools</Link> mod from Geode, we can extract any level string straight from the level editor.
+
+<Steps>
+    <Step>
+        Go to the mod's settings and ensure that the "Level Copy Type" setting is set to **Encoded**, and that the "Copy Level String" setting is **enabled**.
+    </Step>
+    <Step>
+        Open your desired level. You should see a page that looks as shown below:
+        <Image
+            src="/assets/fangame/chap1-editor.png"
+            alt="A page showing the level's info (with editor/play/share buttons in the middle) and an editable level name/description"
+        />
+    </Step>
+    <Step>
+        Click the button to the **right** of your screen. It should say "Copy Data".
+        If a notification saying, "Encoded level copied to clipboard successfully!" appeared for you, this should've worked successfully!
+    </Step>
+</Steps>
+
+### Adding level data to resources
+
+Geode allows you to easily add resources (files along with your base mod) to your mod. To do so, add a new `resources` key to your `mod.json` as shown below:
+
+```json
+{
+    ...
+    "resources": {
+        "files": [
+            "res/levels/*.txt"
+        ]
+    }
+}
+```
+
+If you have another name for your resources folder, feel free to use that instead - you are not limited to the `res/levels` path.
+
+Next, create a text file for each level inside your levels folder and paste the encoded level data into it.
+
+For example:
+
+- `res/levels/level1.txt`
+- `res/levels/level2.txt`
+- `res/levels/level3.txt`
+
+The number in the file name corresponds directly to the level ID used in GD (e.g. `level1.txt` -> Level 1). If negative level IDs are used (for custom or extended implementations), you can name files using the same pattern, such as `level-1.txt`.
+
+### Registering the custom levels in GD
+
+Now that we have the custom level(s) in the mod's resources folder, we can start writing code to register the levels in GD. To do this, we will first hook `LocalLevelManager` to instead get the main level strings from our mod's resources:
+
+```cpp
+#include <Geode/Geode.hpp>
+#include <Geode/modify/LocalLevelManager.hpp>
+
+using namespace geode::prelude;
+
+class $modify(MyLocalLevelManager, LocalLevelManager) {
+    gd::string getMainLevelString(int id) {
+        auto file = CCString::createWithFormat("level%i.txt"_spr, id);
+        if(file == nullptr) return "";
+        auto content = CCString::createWithContentsOfFile(file->getCString());
+        if(content == nullptr) return "";
+
+        return gd::string(content->getCString());
+    }
+};
+```
+
+Although we have overwritten the level string, we must also **limit the number of levels being displayed in the main levels page** and **display custom metadata for the levels.** To do this, we will also hook `LevelTools`:
+
+```cpp
+#include <Geode/Geode.hpp>
+#include <Geode/modify/LevelTools.hpp>
+
+using namespace geode::prelude;
+
+class $modify(MyLevelTools, LevelTools) {
+    GJGameLevel* getLevel(int levelID, bool loaded) {
+        GJGameLevel* level = GJGameLevel::create();
+        level->m_levelName = getAudioTitle(levelID - 1);
+        level->m_audioTrack = levelID - 1;
+
+        switch(levelID) {
+            case 1: 
+                setLevelInfo(level, 4, GJDifficulty::Hard, 0);
+                level->m_coins = 3;
+                break;
+            case 2:
+                setLevelInfo(level, 6, GJDifficulty::Harder, 0);
+                level->m_coins = 3;
+                break;
+        }
+        if (!loaded) {
+            level->m_levelString = LocalLevelManager::sharedState()->getMainLevelString(levelID);
+        }
+        level->m_levelID = levelID;
+        level->m_levelType = GJLevelType::Saved;
+        return level;
+    }
+};
+```
+
+## Adding custom artists (annoying but required)
+
+In your fangame, you will likely have completely different artists for your levels. With this, you will also need to find their socials (music video, Newgrounds, YouTube, and Facebook). But don't worry if you can't find any specific one, as you can just set the URL to empty (`""`) and GD will **not** render that specific button.
+
+```cpp
+// Still in the same LevelTools hook
+$modify(MyLevelTools, LevelTools) {
+    // Where you set your song names
+    gd::string getAudioTitle(int audioID) {
+        switch(audioID) {
+            case -1: return "Stay Inside Me";
+            case 0: return "Badland";
+            case 1: return "Unstable Geometry";
+            default: return "";
+        }
+    }
+
+    // Where you set WHERE the song files are
+    gd::string getAudioFileName(int audioID) {
+        auto saveDir = Mod::get()->getSaveDir();
+        switch(audioID) {
+            case -1: return "StayInsideMe.mp3";
+            case 0: return (const char*)((saveDir / "songs" / "Badland.mp3").u8string().c_str());
+            case 1: return (const char*)((saveDir / "songs" / "UnstableGeometry.mp3").u8string().c_str());
+            default: return (const char*)((saveDir / "songs" / fmt::format("{}.ogg", audioID)).u8string().c_str());;
+        }
+    }
+
+    // Where you set the artists list
+    gd::string nameForArtist(int artistID) {
+        switch(artistID) {
+            case 1: return "Boom Kitty";
+            case 2: return "Waterflame";
+            default: return "";
+        }
+    }
+
+    // Where you set the song URL
+    gd::string urlForAudio(int audioID) {
+        switch(audioID) {
+            case -1: return "https://www.youtube.com/watch?v=5Epc1Beme90";
+            case 0: return "https://www.youtube.com/watch?v=LfgzPpmjM0M";
+            case 1: return "https://www.youtube.com/watch?v=8S9ZpjyrP0A";
+            default: return "";
+        }
+    }
+
+    // Where you set the Newgrounds of that specific artist
+    gd::string ngURLForArtist(int artistID) {
+        switch(artistID) {
+            case 1: return "https://boomkitty.newgrounds.com/";
+            case 2: return "https://waterflame.newgrounds.com/";
+            default: return "";
+        }
+    }
+
+    // Where you set the YouTube channel of that specific artist
+    gd::string ytURLForArtist(int artistID) {
+        switch(artistID) {
+            case 1: return "https://www.youtube.com/@BoomKitty";
+            case 2: return "https://www.youtube.com/@WaterflameMusic";
+            default: return "";
+        }
+    }
+
+    // Where you set the Facebook page of that specific artist
+    gd::string fbURLForArtist(int artistID) {
+        switch(artistID) {
+            case 2: return "https://www.facebook.com/Waterflameworkshop/";
+            default: return "";
+        }
+    }
+
+    // Where you assign each song an artist
+    int artistForAudio(int audioID) {
+        switch(audioID) {
+            case -1: return 4;
+            case 0: return 1;
+            case 1: return 2;
+            default: return 0;
+        }
+    }
+};
+```
+
+## Making levels playable
+
+If you attempt to open a level in your mod's current state, it may say "Failed to load" when you open the level. To fix this, you need to hook `LevelTools` again and ensure each time the game checks the level's integrity, it returns `true`:
+
+```cpp
+class $modify(MyLevelTools, LevelTools) {
+    bool verifyLevelIntegrity(gd::string verifyString, int levelID) {
+        return true;
+    }
+};
+```
+
+Now, you should have a fully working custom level select screen (with fully custom levels) in GD. If you still require assistance, feel free to <Link href="https://github.com/OmgRod/gd-resources/issues/new?template=question.yml">ask a question</Link> on GitHub!

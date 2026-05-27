@@ -1,13 +1,13 @@
 {
-  "siteName": "AwesomeGD",
+  "siteName": "GD Resources",
   "siteDescription": "Awesome Geometry Dash documentation & tools",
-  "titleSuffix": "AwesomeGD",
+  "titleSuffix": "GD Resources",
   "faviconPath": "/favicon.png",
   "branding": {
     "display": "logo-only",
     "logoPath": "/logo.png",
-    "logoAlt": "AwesomeGD logo",
-    "text": "AwesomeGD",
+    "logoAlt": "GD Resources logo",
+    "text": "GD Resources",
     "logoClassName": "h-7 w-auto"
   },
   "wikiPreset": "docs",
@@ -24,7 +24,7 @@
   "editPage": {
     "enabled": true,
     "provider": "github",
-    "repository": "OmgRod/awesome.gd",
+    "repository": "OmgRod/gd-resources",
     "branch": "main",
     "contentPath": "content",
     "text": "Edit this page"

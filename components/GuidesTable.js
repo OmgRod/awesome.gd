@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Table, THead, TBody, TR, TH, TD } from './WikiTable';
+import { Table, THead, TBody, TR, TH, TD, Caption } from './WikiTable';
+import { useGuidesContext } from '../lib/guides-context';
 
 function toSearchableText(value) {
   if (value == null) return '';
@@ -109,15 +110,26 @@ function highlightText(text, positions) {
   return parts;
 }
 
-export default function GuidesTable({ guides = [] }) {
+export default function GuidesTable({ guides: initialGuides = [], subdirectory, subcategory, caption, subdirectoryGuides: propGuides = {} }) {
+  const directory = subdirectory || subcategory;
+  const contextGuides = useGuidesContext();
+
+  const resolvedGuides = useMemo(() => {
+    if (directory) {
+      const normalized = String(directory).replace(/^\/+/, '');
+      return contextGuides[normalized] ?? propGuides[normalized] ?? [];
+    }
+    return initialGuides;
+  }, [directory, contextGuides, propGuides, initialGuides]);
+
   const [query, setQuery] = useState('');
 
   const normalized = useMemo(() => {
-    return guides.map((g) => ({
+    return resolvedGuides.map((g) => ({
       ...g,
       searchable: `${g.title || ''} ${g.description || ''} ${toSearchableText(g.metadata || '')}`,
     }));
-  }, [guides]);
+  }, [resolvedGuides]);
 
   const results = useMemo(() => {
     const q = String(query || '').trim();
@@ -142,7 +154,7 @@ export default function GuidesTable({ guides = [] }) {
       .sort((a, b) => b.score - a.score);
   }, [normalized, query]);
 
-  if (!guides.length) {
+  if (!resolvedGuides.length) {
     return <p>No guides are available yet.</p>;
   }
 
@@ -160,6 +172,7 @@ export default function GuidesTable({ guides = [] }) {
       </div>
 
       <Table>
+        {caption ? <Caption>{caption}</Caption> : null}
         <THead>
           <TR>
             <TH>Title</TH>

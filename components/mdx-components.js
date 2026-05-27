@@ -19,10 +19,12 @@ import Kbd from './Kbd';
 import PresetSearch from './PresetSearch';
 import SearchBar from './SearchBar';
 import Sidebar from './Sidebar';
-import Steps from './Steps';
+import Steps, { Step } from './Steps';
 import Tabs, { Tab, TabPanels } from './Tabs';
 import GuidesTable from './GuidesTable';
 import Image from './Image';
+import AuthorCard from './AuthorCard';
+import AuthorList from './AuthorList';
 import Table, { Caption, TBody, TD, TH, THead, TR } from './WikiTable';
 import {
   AreaChart,
@@ -36,6 +38,7 @@ import {
 import { FormulaList, MathEquation, MathSteps, UnitConverter } from './math';
 import { CompoundBreakdown, ElementCard, PeriodicTable } from './science';
 import { Flashcards, Poll, Quiz } from './interactive';
+import YouTube from './YouTube';
 import Link from 'next/link';
 
 const mdxComponents = {
@@ -81,7 +84,11 @@ const mdxComponents = {
   SparklineChart,
   StackedBarChart,
   Steps,
+  Step,
+  AuthorList,
   UnitConverter,
+  YouTube,
+  AuthorCard,
   Table,
   img: Image,
   TBody,

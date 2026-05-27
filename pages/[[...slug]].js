@@ -13,6 +13,7 @@ import mdxComponents from '../components/mdx-components';
 import { mergeTemplateConfig, resolveTemplate } from '../templates';
 import Icon from '../components/Icon'
 import { normalizeAssetPath } from '../lib/asset-path';
+import { GuidesContext } from '../lib/guides-context';
 
 const {
   CONTENT_DIR,
@@ -51,6 +52,33 @@ function normalizeRoutePath(routePath = '/') {
 
   const normalized = `/${trimSlashes(String(routePath))}`;
   return normalized === '/' ? '/' : normalized.replace(/\/+$/, '');
+}
+
+function renderAuthorCardSnippet(authorData) {
+  if (!authorData?.username) {
+    return '';
+  }
+
+  return ['username', 'name', 'avatar', 'url']
+    .filter((key) => authorData[key])
+    .map((key) => `${key}="${String(authorData[key]).replace(/"/g, '&quot;')}"`)
+    .join(' ');
+}
+
+function insertAuthorCard(content, authorData) {
+  const props = renderAuthorCardSnippet(authorData);
+  if (!props) {
+    return content;
+  }
+
+  const snippet = `\n\n<AuthorCard ${props} />\n\n`;
+  const headingMatch = content.match(/^#\s+.*$/m);
+
+  if (headingMatch) {
+    return content.replace(/^#\s+.*$/m, (match) => `${match}${snippet}`);
+  }
+
+  return `${snippet}${content}`;
 }
 
 function getNestedSidebarItems(item) {
@@ -183,6 +211,7 @@ export default function WikiPage({
   pagePreset,
   editPage,
   pageNavigation,
+  subdirectoryGuides,
 }) {
   const titleSuffix = siteConfig?.titleSuffix || siteConfig?.siteName || 'MiniWiki';
   const fallbackDescription = siteConfig?.siteDescription || '';
@@ -208,7 +237,9 @@ export default function WikiPage({
         presetOverride={pagePreset}
       >
         <Template title={title} description={description} templateConfig={templateConfig}>
-          <MDXRemote {...mdxSource} components={mdxComponents} />
+          <GuidesContext.Provider value={subdirectoryGuides || {}}>
+            <MDXRemote {...mdxSource} components={mdxComponents} />
+          </GuidesContext.Provider>
 
           {/* {pageNavigation?.previous || pageNavigation?.next ? (
             <nav
@@ -292,10 +323,38 @@ export async function getStaticProps({ params }) {
   }
 
   const source = fs.readFileSync(filePath, 'utf8');
-  const { content, data } = matter(source);
+  const { content: rawContent, data } = matter(source);
   const relativePath = toPosixPath(path.relative(CONTENT_DIR, filePath));
   const siteConfig = getSiteConfig(relativePath);
   const templatesConfig = getTemplatesConfig(relativePath);
+
+  let content = rawContent;
+  let author = null;
+  const authorsFile = path.join(CONTENT_DIR, 'authors.json');
+
+  if (data.author && typeof data.author === 'string' && fs.existsSync(authorsFile)) {
+    try {
+      const authors = JSON.parse(fs.readFileSync(authorsFile, 'utf8')) || {};
+      const authorMeta = authors[data.author];
+
+      if (authorMeta) {
+        author = {
+          username: data.author,
+          name: authorMeta.name || data.author,
+          avatar: authorMeta.avatar,
+          url: authorMeta.url,
+        };
+      } else {
+        author = { username: data.author, name: data.author };
+      }
+    } catch (error) {
+      author = { username: data.author, name: data.author };
+    }
+  }
+
+  if (author) {
+    content = insertAuthorCard(content, author);
+  }
   const pageTemplatesEnabled = siteConfig?.pageTemplates?.enabled !== false;
   const siteDefaultTemplate =
     siteConfig?.defaultTemplate ||
@@ -310,6 +369,16 @@ export async function getStaticProps({ params }) {
   const guides = isGuideIndex
     ? getDirectoryPageMeta(path.posix.dirname(relativePath), { exclude: ['index'] })
     : [];
+
+  const subdirRegex = /\bsub(?:directory|category)=["']([^"']+)["']/g;
+  const subdirectoryGuides = {};
+  let sdMatch;
+  while ((sdMatch = subdirRegex.exec(rawContent)) !== null) {
+    const dir = sdMatch[1];
+    if (!subdirectoryGuides[dir]) {
+      subdirectoryGuides[dir] = getDirectoryPageMeta(dir, { exclude: ['index'] });
+    }
+  }
 
   let counts = {};
   if (relativePath === 'guides.mdx') {
@@ -327,7 +396,7 @@ export async function getStaticProps({ params }) {
 
   const mdxSource = await serialize(content, {
     parseFrontmatter: false,
-    scope: { guides, counts },
+    scope: { guides, counts, subdirectoryGuides },
     blockJS: false,
     mdxOptions: {
       remarkPlugins: [remarkGfm],
@@ -387,6 +456,7 @@ export async function getStaticProps({ params }) {
         text: data.editPageText || siteConfig?.editPage?.text || 'Edit this page',
       },
       pageNavigation,
+      subdirectoryGuides,
     },
   };
 }

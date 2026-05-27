@@ -6,10 +6,21 @@ export default function SearchBar({ documents = [], placeholder = 'Search docs..
   const [query, setQuery] = useState('');
 
   const index = useMemo(() => {
-    const searchIndex = new FlexSearch.Index({ tokenize: 'forward' });
+    const searchIndex = new FlexSearch.Document({
+      tokenize: 'forward',
+      document: {
+        id: 'id',
+        index: ['title', 'description', 'content']
+      }
+    });
 
     documents.forEach((doc, id) => {
-      searchIndex.add(id, `${doc.title} ${doc.excerpt} ${doc.route}`);
+      searchIndex.add({
+        id,
+        title: doc.title || '',
+        description: doc.description || '',
+        content: doc.content || doc.excerpt || '',
+      });
     });
 
     return searchIndex;
@@ -20,8 +31,23 @@ export default function SearchBar({ documents = [], placeholder = 'Search docs..
       return [];
     }
 
-    const ids = index.search(query, { limit: 8 });
-    return ids.map((id) => documents[id]).filter(Boolean);
+    const searchResults = index.search(query, { limit: 8 });
+    const uniqueIds = new Set();
+    
+    // FlexSearch Document returns an array of results per field,
+    // e.g. [{ field: 'title', result: [id1, id2] }, { field: 'description', result: [id3] }]
+    // Fields are ordered as defined in the document index (title, description, content),
+    // which naturally prioritizes the first fields over the later ones.
+    searchResults.forEach((fieldResult) => {
+      fieldResult.result.forEach((id) => {
+        uniqueIds.add(id);
+      });
+    });
+
+    return Array.from(uniqueIds)
+      .map((id) => documents[id])
+      .filter(Boolean)
+      .slice(0, 8);
   }, [documents, index, query]);
 
   return (

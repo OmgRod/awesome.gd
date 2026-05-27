@@ -1,4 +1,5 @@
 const fs = require('node:fs');
+const path = require('node:path');
 
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
 const repository = process.env.GITHUB_REPOSITORY || '';
