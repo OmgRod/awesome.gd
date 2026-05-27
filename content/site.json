@@ -4,9 +4,9 @@
   "titleSuffix": "AwesomeGD",
   "faviconPath": "/favicon.png",
   "branding": {
-    "display": "logo-and-text",
-    "logoPath": "/favicon.png",
-    "logoAlt": "Geometry Dash logo",
+    "display": "logo-only",
+    "logoPath": "/logo.png",
+    "logoAlt": "AwesomeGD logo",
     "text": "AwesomeGD",
     "logoClassName": "h-7 w-auto"
   },
