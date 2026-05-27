@@ -210,7 +210,7 @@ export default function WikiPage({
         <Template title={title} description={description} templateConfig={templateConfig}>
           <MDXRemote {...mdxSource} components={mdxComponents} />
 
-          {pageNavigation?.previous || pageNavigation?.next ? (
+          {/* {pageNavigation?.previous || pageNavigation?.next ? (
             <nav
               className="mt-10 border-t border-slate-200 pt-4 dark:border-slate-800"
               aria-label="Docs page navigation"
@@ -247,7 +247,7 @@ export default function WikiPage({
                 ) : null}
               </div>
             </nav>
-          ) : null}
+          ) : null} */}
 
           {editPage?.url ? (
             <div className="mt-10 border-t border-slate-200 pt-4 dark:border-slate-800">
