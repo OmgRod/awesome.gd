@@ -34,10 +34,6 @@ export default function SearchBar({ documents = [], placeholder = 'Search docs..
     const searchResults = index.search(query, { limit: 8 });
     const uniqueIds = new Set();
     
-    // FlexSearch Document returns an array of results per field,
-    // e.g. [{ field: 'title', result: [id1, id2] }, { field: 'description', result: [id3] }]
-    // Fields are ordered as defined in the document index (title, description, content),
-    // which naturally prioritizes the first fields over the later ones.
     searchResults.forEach((fieldResult) => {
       fieldResult.result.forEach((id) => {
         uniqueIds.add(id);

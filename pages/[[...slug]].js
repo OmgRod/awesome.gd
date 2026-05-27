@@ -21,6 +21,7 @@ const {
   getFilePathFromSlugSegments,
   getPageMetaIndex,
   getDirectoryPageMeta,
+  countDirectoryPagesRecursively,
 } = require('../lib/content');
 const {
   getHeaderConfig,
@@ -383,14 +384,14 @@ export async function getStaticProps({ params }) {
   let counts = {};
   if (relativePath === 'guides.mdx') {
     counts = {
-      geode: getDirectoryPageMeta('geode/guides', { exclude: ['index'] }).length,
-      reversing: getDirectoryPageMeta('reversing/guides', { exclude: ['index'] }).length,
-      geometrydash: getDirectoryPageMeta('geometrydash/guides', { exclude: ['index'] }).length,
-      levels: getDirectoryPageMeta('levels/guides', { exclude: ['index'] }).length,
-      servers: getDirectoryPageMeta('servers/guides', { exclude: ['index'] }).length,
-      savefiles: getDirectoryPageMeta('savefiles/guides', { exclude: ['index'] }).length,
-      tradmodding: getDirectoryPageMeta('tradmodding/guides', { exclude: ['index'] }).length,
-      misc: getDirectoryPageMeta('misc/guides', { exclude: ['index'] }).length,
+      geode: countDirectoryPagesRecursively('geode/guides', { exclude: ['index'] }),
+      reversing: countDirectoryPagesRecursively('reversing/guides', { exclude: ['index'] }),
+      geometrydash: countDirectoryPagesRecursively('geometrydash/guides', { exclude: ['index'] }),
+      levels: countDirectoryPagesRecursively('levels/guides', { exclude: ['index'] }),
+      servers: countDirectoryPagesRecursively('servers/guides', { exclude: ['index'] }),
+      savefiles: countDirectoryPagesRecursively('savefiles/guides', { exclude: ['index'] }),
+      tradmodding: countDirectoryPagesRecursively('tradmodding/guides', { exclude: ['index'] }),
+      misc: countDirectoryPagesRecursively('misc/guides', { exclude: ['index'] }),
     };
   }
 
