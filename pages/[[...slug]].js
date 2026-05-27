@@ -310,9 +310,22 @@ export async function getStaticProps({ params }) {
     ? getDirectoryPageMeta('geode/guides', { exclude: ['index'] })
     : [];
 
+  let counts = {};
+  if (relativePath === 'guides.mdx') {
+    counts = {
+      geode: getDirectoryPageMeta('geode/guides', { exclude: ['index'] }).length,
+      reversing: getDirectoryPageMeta('reversing/guides', { exclude: ['index'] }).length,
+      geometrydash: getDirectoryPageMeta('geometrydash/guides', { exclude: ['index'] }).length,
+      levels: getDirectoryPageMeta('levels/guides', { exclude: ['index'] }).length,
+      servers: getDirectoryPageMeta('servers/guides', { exclude: ['index'] }).length,
+      savefiles: getDirectoryPageMeta('savefiles/guides', { exclude: ['index'] }).length,
+      misc: getDirectoryPageMeta('misc/guides', { exclude: ['index'] }).length,
+    };
+  }
+
   const mdxSource = await serialize(content, {
     parseFrontmatter: false,
-    scope: { guides },
+    scope: { guides, counts },
     blockJS: false,
     mdxOptions: {
       remarkPlugins: [remarkGfm],

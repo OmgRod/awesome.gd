@@ -8,24 +8,45 @@ editPage: true
 
 <CardGrid columns={3}>
   <Card title="Geode SDK">
+    <div className="mb-2">
+      <Badge>{counts?.geode || 0} guides</Badge>
+    </div>
     <ButtonLink href="/geode/guides/index" variant="primary">Learn</ButtonLink>
   </Card>
   <Card title="Reverse Engineering">
+    <div className="mb-2">
+      <Badge>{counts?.reversing || 0} guides</Badge>
+    </div>
     <ButtonLink href="/reversing/guides/index" variant="primary">Learn</ButtonLink>
   </Card>
   <Card title="Geometry Dash">
+    <div className="mb-2">
+      <Badge>{counts?.geometrydash || 0} guides</Badge>
+    </div>
     <ButtonLink href="/geometrydash/guides/index" variant="primary">Learn</ButtonLink>
   </Card>
   <Card title="Levels">
+    <div className="mb-2">
+      <Badge>{counts?.levels || 0} guides</Badge>
+    </div>
     <ButtonLink href="/levels/guides/index" variant="primary">Learn</ButtonLink>
   </Card>
   <Card title="GD Servers">
+    <div className="mb-2">
+      <Badge>{counts?.servers || 0} guides</Badge>
+    </div>
     <ButtonLink href="/servers/guides/index" variant="primary">Learn</ButtonLink>
   </Card>
   <Card title="Savefiles">
+    <div className="mb-2">
+      <Badge>{counts?.savefiles || 0} guides</Badge>
+    </div>
     <ButtonLink href="/savefiles/guides/index" variant="primary">Learn</ButtonLink>
   </Card>
   <Card title="Miscellaneous">
+    <div className="mb-2">
+      <Badge>{counts?.misc || 0} guides</Badge>
+    </div>
     <ButtonLink href="/misc/guides/index" variant="primary">Learn</ButtonLink>
   </Card>
 </CardGrid>
