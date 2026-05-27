@@ -10,6 +10,7 @@
         { "label": "Levels", "url": "/levels/index" },
         { "label": "Servers", "url": "/servers/index" },
         { "label": "Savefiles", "url": "/savefiles/index" },
+        { "label": "Traditional Modding", "url": "/tradmodding/index" },
         { "label": "Miscellaneous", "url": "/misc/index" }
       ]
     },

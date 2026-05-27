@@ -57,6 +57,14 @@
       ]
     },
     {
+      "title": "Traditional Modding",
+      "collapsible": true,
+      "items": [
+        { "title": "Table of Contents", "path": "/tradmodding/index" },
+        { "title": "Official Guides", "path": "/tradmodding/guides/index" }
+      ]
+    },
+    {
       "title": "Miscellaneous",
       "collapsible": true,
       "items": [

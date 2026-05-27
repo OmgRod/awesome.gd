@@ -306,8 +306,9 @@ export async function getStaticProps({ params }) {
     siteDefaultTemplate;
   const templateKey = pageTemplatesEnabled ? data.template || fallbackTemplate : fallbackTemplate;
 
-  const guides = relativePath === 'geode/guides/index.mdx'
-    ? getDirectoryPageMeta('geode/guides', { exclude: ['index'] })
+  const isGuideIndex = relativePath.endsWith('/guides/index.mdx');
+  const guides = isGuideIndex
+    ? getDirectoryPageMeta(path.posix.dirname(relativePath), { exclude: ['index'] })
     : [];
 
   let counts = {};
@@ -319,6 +320,7 @@ export async function getStaticProps({ params }) {
       levels: getDirectoryPageMeta('levels/guides', { exclude: ['index'] }).length,
       servers: getDirectoryPageMeta('servers/guides', { exclude: ['index'] }).length,
       savefiles: getDirectoryPageMeta('savefiles/guides', { exclude: ['index'] }).length,
+      tradmodding: getDirectoryPageMeta('tradmodding/guides', { exclude: ['index'] }).length,
       misc: getDirectoryPageMeta('misc/guides', { exclude: ['index'] }).length,
     };
   }
