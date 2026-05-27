@@ -25,6 +25,22 @@
       ]
     },
     {
+      "title": "Geometry Dash",
+      "collapsible": true,
+      "items": [
+        { "title": "Table of Contents", "path": "/geometrydash/index" },
+        { "title": "Official Guides", "path": "/geometrydash/guides/index" }
+      ]
+    },
+    {
+      "title": "Levels",
+      "collapsible": true,
+      "items": [
+        { "title": "Table of Contents", "path": "/levels/index" },
+        { "title": "Official Guides", "path": "/levels/guides/index" }
+      ]
+    },
+    {
       "title": "GD Servers",
       "collapsible": true,
       "items": [
