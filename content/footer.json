@@ -4,14 +4,14 @@
       "title": "Navigation",
       "links": [
         { "label": "Home", "url": "/" },
-        { "label": "Geode", "url": "/geode/index" },
-        { "label": "Reverse Engineering", "url": "/reversing/index" },
+        { "label": "GD Servers", "url": "/servers/index" },
+        { "label": "Geode SDK", "url": "/geode/index" },
         { "label": "Geometry Dash", "url": "/geometrydash/index" },
         { "label": "Levels", "url": "/levels/index" },
-        { "label": "Servers", "url": "/servers/index" },
+        { "label": "Miscellaneous", "url": "/misc/index" },
+        { "label": "Reverse Engineering", "url": "/reversing/index" },
         { "label": "Savefiles", "url": "/savefiles/index" },
-        { "label": "Traditional Modding", "url": "/tradmodding/index" },
-        { "label": "Miscellaneous", "url": "/misc/index" }
+        { "label": "Traditional Modding", "url": "/tradmodding/index" }
       ]
     },
     {

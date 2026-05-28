@@ -97,6 +97,19 @@ function resolveIcon(name = 'info') {
   const rawName = String(name || '').trim();
   const lowerName = rawName.toLowerCase();
 
+  if (lowerName === 'github') {
+    if (isIconComponent(LucideIcons.GitHub)) return LucideIcons.GitHub;
+    if (isIconComponent(LucideIcons.Github)) return LucideIcons.Github;
+  }
+  if (lowerName === 'youtube') {
+    if (isIconComponent(LucideIcons.YouTube)) return LucideIcons.YouTube;
+    if (isIconComponent(LucideIcons.Youtube)) return LucideIcons.Youtube;
+  }
+  if (lowerName === 'linkedin') {
+    if (isIconComponent(LucideIcons.LinkedIn)) return LucideIcons.LinkedIn;
+    if (isIconComponent(LucideIcons.Linkedin)) return LucideIcons.Linkedin;
+  }
+
   const aliasName = ICON_ALIASES[lowerName];
   if (aliasName && isIconComponent(LucideIcons[aliasName])) {
     return LucideIcons[aliasName];
@@ -114,7 +127,34 @@ function resolveIcon(name = 'info') {
   return LucideIcons.Info;
 }
 
+const LOCAL_ICONS = ['github'];
+
 export default function Icon({ name = 'info', size = 18, className = '' }) {
+  const lowerName = String(name || '').trim().toLowerCase();
+
+  if (LOCAL_ICONS.includes(lowerName)) {
+    return (
+      <span
+        className={`inline-block ${className}`}
+        style={{
+          width: `${size}px`,
+          height: `${size}px`,
+          backgroundColor: 'currentColor',
+          maskImage: `url(/icons/${lowerName}.svg)`,
+          maskSize: 'contain',
+          maskRepeat: 'no-repeat',
+          maskPosition: 'center',
+          WebkitMaskImage: `url(/icons/${lowerName}.svg)`,
+          WebkitMaskSize: 'contain',
+          WebkitMaskRepeat: 'no-repeat',
+          WebkitMaskPosition: 'center',
+          verticalAlign: 'middle',
+        }}
+        aria-label={name}
+      />
+    );
+  }
+
   const ResolvedIcon = resolveIcon(name);
   return <ResolvedIcon size={size} className={className} aria-hidden="true" />;
 }

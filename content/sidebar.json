@@ -11,6 +11,14 @@
       ]
     },
     {
+      "title": "GD Servers",
+      "collapsible": true,
+      "items": [
+        { "title": "Table of Contents", "path": "/servers/index" },
+        { "title": "Official Guides", "path": "/servers/guides/index" }
+      ]
+    },
+    {
       "title": "Geode SDK",
       "collapsible": true,
       "items": [
@@ -20,14 +28,6 @@
           { "title": "1: Custom Levels", "path": "/geode/guides/fangame/chap1" },
           { "title": "2: Adding Song Credits", "path": "/geode/guides/fangame/chap2" }
         ]}
-      ]
-    },
-    {
-      "title": "Reverse Engineering",
-      "collapsible": true,
-      "items": [
-        { "title": "Table of Contents", "path": "/reversing/index" },
-        { "title": "Official Guides", "path": "/reversing/guides/index" }
       ]
     },
     {
@@ -47,11 +47,19 @@
       ]
     },
     {
-      "title": "GD Servers",
+      "title": "Miscellaneous",
       "collapsible": true,
       "items": [
-        { "title": "Table of Contents", "path": "/servers/index" },
-        { "title": "Official Guides", "path": "/servers/guides/index" }
+        { "title": "Table of Contents", "path": "/misc/index" },
+        { "title": "Official Guides", "path": "/misc/guides/index" }
+      ]
+    },
+    {
+      "title": "Reverse Engineering",
+      "collapsible": true,
+      "items": [
+        { "title": "Table of Contents", "path": "/reversing/index" },
+        { "title": "Official Guides", "path": "/reversing/guides/index" }
       ]
     },
     {
@@ -68,14 +76,6 @@
       "items": [
         { "title": "Table of Contents", "path": "/tradmodding/index" },
         { "title": "Official Guides", "path": "/tradmodding/guides/index" }
-      ]
-    },
-    {
-      "title": "Miscellaneous",
-      "collapsible": true,
-      "items": [
-        { "title": "Table of Contents", "path": "/misc/index" },
-        { "title": "Official Guides", "path": "/misc/guides/index" }
       ]
     }
   ]
