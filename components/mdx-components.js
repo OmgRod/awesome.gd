@@ -37,7 +37,7 @@ import {
 } from './charts';
 import { FormulaList, MathEquation, MathSteps, UnitConverter } from './math';
 import { CompoundBreakdown, ElementCard, PeriodicTable } from './science';
-import { Flashcards, Poll, Quiz } from './interactive';
+import { Flashcards, Poll, Quiz, InteractiveFlowchart } from './interactive';
 import YouTube from './YouTube';
 import Link from 'next/link';
 
@@ -90,6 +90,7 @@ const mdxComponents = {
   YouTube,
   AuthorCard,
   Table,
+  InteractiveFlowchart,
   img: Image,
   TBody,
   TD,

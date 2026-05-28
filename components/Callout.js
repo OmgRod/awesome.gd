@@ -1,6 +1,6 @@
 import Icon from './Icon';
 
-export default function Callout({ icon = 'idea', variant = 'default', children }) {
+export default function Callout({ icon = 'idea', variant = 'default', title, children }) {
   const styles = {
     default:
       'border-blue-300 bg-blue-50 text-blue-900 dark:border-blue-800 dark:bg-blue-950/35 dark:text-blue-100',
@@ -30,7 +30,10 @@ export default function Callout({ icon = 'idea', variant = 'default', children }
       <span className={`mt-3 inline-flex h-5 w-5 shrink-0 items-center justify-center leading-none ${iconColorClass}`}>
         <Icon name={icon} size={18} />
       </span>
-      <div className="min-w-0 text-sm leading-6 [&_p]:m-0">{children}</div>
+      <div className="min-w-0 text-sm leading-6 [&_p]:m-0">
+        {title ? <p className="mb-2 text-sm font-semibold text-slate-900 dark:text-slate-100">{title}</p> : null}
+        {children}
+      </div>
     </div>
   );
 }

@@ -21,7 +21,11 @@ export default function geImage({
   const normalizedSrc = normalizeAssetPath(src || '');
   const useFill = enforceAspect && (!width || !height);
   const useNativeImg = !useFill && (!width || !height);
+
+  const Wrapper = caption ? 'figure' : 'span';
+  const wrapperClass = caption ? 'my-6' : 'inline-block';
   const wrapperStyle = {
+    display: caption ? undefined : 'block',
     width: typeof width === 'number' ? `${width}px` : width || 'auto',
     maxWidth: '100%',
     aspectRatio: useFill ? aspect : undefined,
@@ -29,8 +33,8 @@ export default function geImage({
   };
 
   return (
-    <figure className="my-6">
-      <div
+    <Wrapper className={wrapperClass}>
+      <span
         className={`relative overflow-hidden ${className}`.trim()}
         style={wrapperStyle}
       >
@@ -55,10 +59,10 @@ export default function geImage({
             {...props}
           />
         )}
-      </div>
+      </span>
       {caption ? (
         <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-400">{caption}</figcaption>
       ) : null}
-    </figure>
+    </Wrapper>
   );
 }

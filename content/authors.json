@@ -3,5 +3,10 @@
     "name": "OmgRod",
     "avatar": "/assets/avatars/OmgRod.png",
     "url": "https://github.com/OmgRod"
+  },
+  "Geode Team": {
+    "name": "Geode Team",
+    "avatar": "/assets/avatars/geode-sdk.png",
+    "url": "https://github.com/geode-sdk"
   }
 }
