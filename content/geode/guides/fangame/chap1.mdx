@@ -191,42 +191,6 @@ $modify(MyLevelTools, LevelTools) {
         }
     }
 
-    // Where you set the song URL
-    gd::string urlForAudio(int audioID) {
-        switch(audioID) {
-            case -1: return "https://www.youtube.com/watch?v=5Epc1Beme90";
-            case 0: return "https://www.youtube.com/watch?v=LfgzPpmjM0M";
-            case 1: return "https://www.youtube.com/watch?v=8S9ZpjyrP0A";
-            default: return "";
-        }
-    }
-
-    // Where you set the Newgrounds of that specific artist
-    gd::string ngURLForArtist(int artistID) {
-        switch(artistID) {
-            case 1: return "https://boomkitty.newgrounds.com/";
-            case 2: return "https://waterflame.newgrounds.com/";
-            default: return "";
-        }
-    }
-
-    // Where you set the YouTube channel of that specific artist
-    gd::string ytURLForArtist(int artistID) {
-        switch(artistID) {
-            case 1: return "https://www.youtube.com/@BoomKitty";
-            case 2: return "https://www.youtube.com/@WaterflameMusic";
-            default: return "";
-        }
-    }
-
-    // Where you set the Facebook page of that specific artist
-    gd::string fbURLForArtist(int artistID) {
-        switch(artistID) {
-            case 2: return "https://www.facebook.com/Waterflameworkshop/";
-            default: return "";
-        }
-    }
-
     // Where you assign each song an artist
     int artistForAudio(int audioID) {
         switch(audioID) {
@@ -308,4 +272,4 @@ class $modify(MyLevelTools, LevelTools) {
 };
 ```
 
-Now, you should have a fully working custom level select screen (with fully custom levels) in GD. If you still require assistance, feel free to <Link href="https://github.com/OmgRod/gd-resources/issues/new?template=question.yml">ask a question</Link> on GitHub!
+Now, you should have a fully working custom level select screen (with fully custom levels) in GD. If you still need help, feel free to <Link href="https://github.com/OmgRod/gd-resources/issues/new?template=question.yml">ask a question</Link> on GitHub!

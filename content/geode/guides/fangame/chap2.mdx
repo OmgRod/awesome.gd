@@ -1,0 +1,91 @@
+---
+title: Adding Song Credits
+description: Give credit to the artists of the songs you added in your fangame
+author: OmgRod
+editPage: true
+---
+
+# Chapter 2: Custom Levels
+
+<Callout>
+    A lot of the code in the following tutorial comes from <Link href="https://github.com/OmgRod/GD-Surge">GD Surge</Link> by OmgRod (which parts of it come from other existing GD fangames like Lunar and Odyssey), so credit to the developers of these mods for writing this code!
+</Callout>
+
+*A YouTube tutorial for this is coming very soon... 👀*
+
+## Adding artist links
+
+To give your artists credit (and, most importantly, to display the **correct** links) we once again hook the `LevelTools` class.
+
+```cpp
+#include <Geode/Geode.hpp>
+#include <Geode/modify/LevelTools.hpp>
+
+using namespace geode::prelude;
+
+class $modify(MyLevelTools, LevelTools) {
+    // Where you set the song URL
+    gd::string urlForAudio(int audioID) {
+        switch(audioID) {
+            case -1: return "https://www.youtube.com/watch?v=5Epc1Beme90";
+            case 0: return "https://www.youtube.com/watch?v=LfgzPpmjM0M";
+            case 1: return "https://www.youtube.com/watch?v=8S9ZpjyrP0A";
+            default: return "";
+        }
+    }
+
+    // Where you set the Newgrounds of that specific artist
+    gd::string ngURLForArtist(int artistID) {
+        switch(artistID) {
+            case 1: return "https://boomkitty.newgrounds.com/";
+            case 2: return "https://waterflame.newgrounds.com/";
+            default: return "";
+        }
+    }
+
+    // Where you set the YouTube channel of that specific artist
+    gd::string ytURLForArtist(int artistID) {
+        switch(artistID) {
+            case 1: return "https://www.youtube.com/@BoomKitty";
+            case 2: return "https://www.youtube.com/@WaterflameMusic";
+            default: return "";
+        }
+    }
+
+    // Where you set the Facebook page of that specific artist
+    gd::string fbURLForArtist(int artistID) {
+        switch(artistID) {
+            case 2: return "https://www.facebook.com/Waterflameworkshop/";
+            default: return "";
+        }
+    }
+};
+```
+
+## Changing the credits page
+
+To change the credits page (`SongsLayer`), we hook that class:
+
+```cpp
+#include <Geode/Geode.hpp>
+#include <Geode/modify/SongsLayer.hpp>
+
+using namespace geode::prelude;
+
+class $modify(MySongsLayer, SongsLayer) {
+    void customSetup() {
+        CCArray* songObjectArray = CCArray::create();
+        songObjectArray->addObject(SongObject::create(0)); // level 1
+        songObjectArray->addObject(SongObject::create(1)); // level 2
+        // ...
+        songObjectArray->addObject(SongObject::create(-1)); // practice song
+
+        m_listLayer->m_listView = CustomListView::create(songObjectArray, nullptr, 220.0, 356.0, 0, BoomListType::Song, 0.0);
+        m_listLayer->addChild(m_listLayer->m_listView);
+    }
+};
+```
+
+Since there is no `init()` function in this class, we had to modify the `customSetup()` function (which for now you can think of as being the same as `init` except it returns `void`).
+
+Now, you should have fully working custom artist credits pages in GD. If you still need help, feel free to <Link href="https://github.com/OmgRod/gd-resources/issues/new?template=question.yml">ask a question</Link> on GitHub!
