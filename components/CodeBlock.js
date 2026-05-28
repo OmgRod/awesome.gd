@@ -2,19 +2,18 @@ import { Highlight, themes } from 'prism-react-renderer';
 import { useEffect, useState } from 'react';
 
 function getCodeString(children) {
-  if (!children) {
+  if (!children) return '';
+
+  function extract(node) {
+    if (node == null) return '';
+    if (typeof node === 'string') return node;
+    if (typeof node === 'number') return String(node);
+    if (Array.isArray(node)) return node.map(extract).join('');
+    if (node.props?.children) return extract(node.props.children);
     return '';
   }
 
-  if (typeof children === 'string') {
-    return children;
-  }
-
-  if (children.props?.children) {
-    return children.props.children;
-  }
-
-  return '';
+  return extract(children);
 }
 
 function getLanguage(className = '') {

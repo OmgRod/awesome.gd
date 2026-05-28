@@ -1,0 +1,286 @@
+---
+title: Setting up Geode
+description: Learn how to set up Geode from scratch and set up your first mod
+author: OmgRod
+order: 1
+editPage: true
+---
+
+# Setting up Geode
+
+We have a YouTube tutorial you may want to watch which may help you set up Geode!
+<YouTube videoId="XMjqYjwTdYk" title="How to make a simple Geode mod in 7 minutes (PART 1)" />
+
+## Setting up Geode CLI
+
+Click the tabs below to switch between guides for your specific operating system.
+
+<TabPanels>
+  <Tab title="Windows">
+    ## Windows Setup Guide
+
+    Please click the buttons below to install any required tools you may not have.
+        <Accordion>
+            <Accordion.Item id="cmake" title="CMake installation guide (required)">
+                <Alert>
+                    Do not follow these instructions if you already have CMake installed.
+                </Alert>
+                <Alert type="danger">
+                    According to the Geode docs, you must download CMake 3.29+.
+                </Alert>
+
+                <Steps>
+                    <Step>
+                        Navigate to <Link href="https://cmake.org/download/" legacyBehavior>https://cmake.org/download/</Link>.
+                    </Step>
+                    <Step>
+                        Scroll down to where it says "Binary distributions:" and select the appropriate Windows Installer (most likely <Kbd>Windows x64 Installer</Kbd>).
+                    </Step>
+                    <Step>
+                        Open the <Kbd>.exe</Kbd> file that you have downloaded and go through the installation.
+                    </Step>
+                </Steps>
+            </Accordion.Item>
+
+            <Accordion.Item id="scoop" title="Scoop installation guide (recommended)">
+                <Alert>
+                    Do not follow these instructions if you already have Scoop installed.
+                </Alert>
+
+                To install Scoop, open Powershell and run the following code:
+
+                ```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+                ```
+
+                If Scoop doesn't work after this point, I recommend you restart your terminal. If that doesn't work, try restarting your PC.
+            </Accordion.Item>
+
+            <Accordion.Item id="git" title="Git installation guide (required)">
+                <Alert>
+                    Do not follow these instructions if you already have Git installed.
+                </Alert>
+
+                We can install Git by using Scoop (which we conveniently just downloaded):
+
+                ```bash
+scoop install git
+                ```
+            </Accordion.Item>
+
+            <Accordion.Item id="clang" title="Clang installation guide (required)">
+                <Alert>
+                    Do not follow these instructions if you already have Clang installed.
+                </Alert>
+
+                To install LLVM (which includes Clang) and Ninja, we run the following command with Scoop:
+
+                ```bash
+scoop install llvm ninja
+                ```
+            </Accordion.Item>
+
+            <Accordion.Item id="vs-build-tools" title="VS Build Tools (required)">
+                <Alert>
+                    Do not follow these instructions if you already have VS Build Tools installed.
+                </Alert>
+
+                <Steps>
+                    <Step>
+                    To install VS Build Tools, open the VS <Link href="https://visualstudio.microsoft.com/downloads/">download page</Link>.
+                    </Step>
+                    <Step>
+                    Scroll down until you see a section that says "All Downloads".
+                    </Step>
+                    <Step>
+                    In the search bar, type "build tools", and you should see a box that says:
+                    <Image
+                        src="/assets/geode-setup-buildtools.png"
+                        alt="A row with the title 'Build Tools for Visual Studio 2026', with a download button to the right"
+                    />
+                    It's fine if the year doesn't match, as long as it's 2022 or higher.
+                    </Step>
+                </Steps>
+            </Accordion.Item>
+        </Accordion>
+
+        Now that you have installed all the required tools, you can finally install the Geode CLI!
+
+        ### Scoop (recommended)
+
+        If you have installed Scoop with the above steps, we recommend you use it to install Geode CLI, by entering the following command:
+
+        ```bash
+scoop bucket add extras
+scoop install geode-sdk-cli
+        ```
+
+        You can also update the CLI later on by typing the following command:
+
+        ```bash
+scoop update geode-sdk-cli
+        ```
+
+        ### winget
+
+        However, if you prefer to use a different package manager (like winget), you may do so by typing the following command:
+
+        ```bash
+winget install GeodeSDK.GeodeCLI
+        ```
+
+        You can later update the CLI by typing the following command:
+
+        ```bash
+winget upgrade GeodeSDK.GeodeCLI
+        ```
+
+        ### Manually (not recommended)
+
+        Following instructions come from Geode docs:
+
+        > Otherwise, you can manually install the Geode CLI by:
+        > 1. Download the latest Windows release over on <Link href="https://github.com/geode-sdk/cli/releases/latest">GitHub</Link>
+        > 2. Extract `geode.exe` into some folder on your computer
+        > 3. Select the executable in File Explorer, <Kbd>Shift</Kbd> + <Kbd>Right-Click</Kbd> it and select `Copy as Path`
+        > 4. Search `Edit the system environment variables` on Windows search. Alternatively, you can open up Control Panel and search for it, then select `Edit the system environment variables` or **to skip straight to step 6 select**
+        > **`Edit environment variables for your account.`**
+        > 5. Click `Environment Variables...`
+        > 6. In the top `User variables` section, select the `Path` variable and click `Edit`
+        > 7. Now click `New` and paste the path of the CLI executable you copied at Step 1. **Remove the `\geode.exe` from the end;** the path has to point to the *directory* with Geode CLI, not the CLI itself.
+        > 8. Click OK to close the environment variable windows.
+  </Tab>
+  <Tab title="macOS">
+  ## macOS Setup Guide
+
+  any mac users feel free to contribute :D
+  
+  for now though read the geode docs:
+  
+  - https://docs.geode-sdk.org/getting-started/cpp-stuff/
+  - https://docs.geode-sdk.org/getting-started/geode-cli/
+  - https://docs.geode-sdk.org/getting-started/sdk/
+  </Tab>
+  <Tab title="Linux">
+  ## Linux Setup Guide
+
+  any linux users feel free to contribute :D
+
+  for now though read the geode docs:
+  
+  - https://docs.geode-sdk.org/getting-started/cpp-stuff/
+  - https://docs.geode-sdk.org/getting-started/geode-cli/
+  - https://docs.geode-sdk.org/getting-started/sdk/
+  </Tab>
+</TabPanels>
+
+## Setting up Geode SDK
+
+Now that you have installed Geode CLI, we may begin setting up Geode SDK!
+
+<Steps>
+    <Step>
+    Before we install the SDK, we must create a profile so that the CLI knows where to install the compiled mods:
+
+    ```bash
+geode config setup
+    ```
+
+    Follow any instructions shown in the terminal from running this command.
+    </Step>
+    <Step>
+    Install Geode SDK:
+
+    ```bash
+geode sdk install
+    ```
+    </Step>
+    <Step>
+    Install binaries for your current version:
+
+    ```bash
+geode sdk install-binaries
+    ```
+    </Step>
+    <Step>
+    (optional) You may switch to the nightly version by typing the following command:
+
+    ```bash
+geode sdk update nightly
+    ```
+
+    Or you may return to the stable verion by typing:
+
+    ```bash
+geode sdk update stable
+    ```
+    </Step>
+</Steps>
+
+## Setting up your IDE (optional, but recommended)
+
+I recommend that you use VS Code as your IDE as it's cross-platform, lightweight, and Geode has a VS Code extension. To install VS Code, follow the steps below:
+
+<Steps>
+    <Step>
+    Click the <Link href="https://code.visualstudio.com/Download">download link here</Link>.
+    </Step>
+    <Step>
+    Open the installation wizard and go through all the steps shown on screen.
+    </Step>
+    <Step>
+    Install the <Link href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake Tools extension</Link>. This will allow you to easily build your mods with VS Code.
+    </Step>
+    <Step>
+    Install the <Link href="https://marketplace.visualstudio.com/items?itemName=GeodeSDK.geode">Geode</Link> extension. This will allow you to easily look up sprites (and read the docs) and open GD straight from VS Code.
+    </Step>
+</Steps>
+
+## Setting up your first mod
+
+To create a new mod, run the following command:
+
+```bash
+geode new
+```
+
+The CLI will then prompt you several things:
+
+```bash
+| Info | This utility will walk you through setting up a new mod.
+| Info | You can change any of the properties you set here later on by editing the generated mod.json file.
+| Info | Choose a template for the mod to be created:
+# We recommend you choose Default
+Name: [Your Mod Name]
+Version: [v1.0.0]
+Developer: [Your Developer Name]
+Description (optional): [Your description]
+Location: [C:/ProjectsFolder/YourModPath]
+| Okay | Do you want to add the cross-platform Github action? (Y/n) y
+| Okay | Do you want to remove comments from the default template? (y/N) y
+```
+
+Next, open VS Code and do the following key combinations consecutively:
+
+- <Kbd>Ctrl</Kbd> + <Kbd>K</Kbd>
+- <Kbd>Ctrl</Kbd> + <Kbd>O</Kbd>
+
+This will prompt you to select a folder. Choose your new mod folder.
+
+<Callout variant="caution" icon="TriangleAlert">
+If the CMake Tools extension isn't working for you, run the `geode build` command to build the mod.
+</Callout>
+
+Once your project is open in VS Code, open `CMakeLists.txt`. This will trigger the `CMake Tools` extension to activate. Once it does, press `F1` to open the command palette and type "Variant". You should see an option that says "`CMake: Select Variant`". Then, a new menu should appear, asking for the variant you want to build with. **Always select `RelWithDebInfo`**.
+
+Finally, if you press `F1` again and type "Build", you should see an option that says "`CMake: Build`". This should compile the mod and automatically install it to your `gd/geode/mods` directory. Now, if you press `F1` and search "Launch", you should see an option that says "`Geode: Launch Geometry Dash`". If you click that, GD should open (make sure you have Steam open though).
+
+If you click the **like** button at the bottom of your screen, you should see this:
+
+<Image
+    src="/assets/geode-setup-popup.png"
+    alt="A custom popup made by your mod."
+/>
+
+Now, you should have a fully working Geode SDK/CLI. If you still need help, feel free to <Link href="https://github.com/OmgRod/gd-resources/issues/new?template=question.yml">ask a question</Link> on GitHub!
