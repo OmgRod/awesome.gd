@@ -25,19 +25,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: yarn
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
 
       - name: Generate SEO files (prebuild)
-        run: yarn prebuild
+        run: npm run prebuild
 
       - name: Build static export
-        run: yarn build
+        run: npm run build
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
