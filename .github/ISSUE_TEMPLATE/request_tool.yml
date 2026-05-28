@@ -55,3 +55,20 @@ body:
       placeholder: This tool allows users to...
     validations:
       required: true
+
+  - type: dropdown
+    id: tool_category
+    attributes:
+      label: Tool / Resource Type
+      description: What kind of tool or resource is this?
+      options:
+        - Geode SDK (mod/docs/etc)
+        - Reverse Engineering (tool/docs/etc)
+        - Geometry Dash (tool/website/docs/etc)
+        - GD Levels (mod/tool/website/docs/etc)
+        - GD Servers (tool/GDPS core/docs/etc)
+        - Savefiles (tool/website/docs/etc)
+        - Traditional Modding (mod/docs/etc)
+        - Miscellaneous (anything else)
+    validations:
+      required: true
