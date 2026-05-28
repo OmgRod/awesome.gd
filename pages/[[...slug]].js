@@ -391,6 +391,7 @@ export async function getStaticProps({ params }) {
       servers: countDirectoryPagesRecursively('servers/guides', { exclude: ['index'] }),
       savefiles: countDirectoryPagesRecursively('savefiles/guides', { exclude: ['index'] }),
       tradmodding: countDirectoryPagesRecursively('tradmodding/guides', { exclude: ['index'] }),
+      webdash: countDirectoryPagesRecursively('webdash/guides', { exclude: ['index'] }),
       misc: countDirectoryPagesRecursively('misc/guides', { exclude: ['index'] }),
     };
   }

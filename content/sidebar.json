@@ -79,6 +79,14 @@
         { "title": "Table of Contents", "path": "/tradmodding/index" },
         { "title": "Official Guides", "path": "/tradmodding/guides/index" }
       ]
+    },
+    {
+      "title": "Web Dash",
+      "collapsible": true,
+      "items": [
+        { "title": "Table of Contents", "path": "/webdash/index" },
+        { "title": "Official Guides", "path": "/webdash/guides/index" }
+      ]
     }
   ]
 }

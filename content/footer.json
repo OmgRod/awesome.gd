@@ -11,7 +11,8 @@
         { "label": "Miscellaneous", "url": "/misc/index" },
         { "label": "Reverse Engineering", "url": "/reversing/index" },
         { "label": "Savefiles", "url": "/savefiles/index" },
-        { "label": "Traditional Modding", "url": "/tradmodding/index" }
+        { "label": "Traditional Modding", "url": "/tradmodding/index" },
+        { "label": "Web Dash", "url": "/webdash/index" }
       ]
     },
     {
