@@ -27,7 +27,6 @@ const {
   getHeaderConfig,
   getSidebarConfig,
   getSiteConfig,
-  getTemplatesConfig,
   getFooterConfig,
 } = require('../lib/navigation');
 
@@ -327,7 +326,6 @@ export async function getStaticProps({ params }) {
   const { content: rawContent, data } = matter(source);
   const relativePath = toPosixPath(path.relative(CONTENT_DIR, filePath));
   const siteConfig = getSiteConfig(relativePath);
-  const templatesConfig = getTemplatesConfig(relativePath);
 
   let content = rawContent;
   let author = null;
@@ -357,11 +355,7 @@ export async function getStaticProps({ params }) {
     content = insertAuthorCard(content, author);
   }
   const pageTemplatesEnabled = siteConfig?.pageTemplates?.enabled !== false;
-  const siteDefaultTemplate =
-    siteConfig?.defaultTemplate ||
-    siteConfig?.pageTemplates?.defaultTemplate ||
-    templatesConfig?.defaultTemplate ||
-    'default';
+  const siteDefaultTemplate = 'default';
   const fallbackTemplate =
     siteDefaultTemplate;
   const templateKey = pageTemplatesEnabled ? data.template || fallbackTemplate : fallbackTemplate;
@@ -449,8 +443,7 @@ export async function getStaticProps({ params }) {
       template: templateKey,
       templateConfig: mergeTemplateConfig(
         templateKey,
-        data.templateConfig,
-        templatesConfig
+        data.templateConfig
       ),
       pagePreset: data.wikiPreset || null,
       editPage: {

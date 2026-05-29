@@ -24,10 +24,9 @@ export function resolveTemplate(templateKey) {
   return TEMPLATE_COMPONENTS[templateKey] || DefaultTemplate;
 }
 
-export function mergeTemplateConfig(templateKey, pageTemplateConfig, templatesConfig) {
-  const defaultTemplateConfig = templatesConfig?.defaults?.[templateKey] || {};
+export function mergeTemplateConfig(templateKey, pageTemplateConfig) {
   return {
-    ...defaultTemplateConfig,
+    ...'default',
     ...(pageTemplateConfig || {}),
   };
 }
