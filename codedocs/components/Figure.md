@@ -8,10 +8,10 @@ Render an image figure with optional caption and width control.
 
 ## Props
 
-- `alt` — Alternative text for accessibility.
-- `caption` — Optional caption text.
-- `src` — Image source URL.
-- `width` — Width value or layout width.
+- `alt` - Alternative text for accessibility.
+- `caption` - Optional caption text.
+- `src` - Image source URL.
+- `width` - Width value or layout width.
 
 ## Example
 

@@ -8,8 +8,8 @@ Render a responsive grid layout to display cards.
 
 ## Props
 
-- `children` — Nested content or child elements.
-- `columns` — Optional prop.
+- `children` - Nested content or child elements.
+- `columns` - Optional prop.
 
 ## Example
 

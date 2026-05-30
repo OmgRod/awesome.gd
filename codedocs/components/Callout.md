@@ -8,10 +8,10 @@ Render a highlighted callout for important notes and tips.
 
 ## Props
 
-- `children` — Nested content or child elements.
-- `icon` — Optional prop.
-- `title` — Title or heading text.
-- `variant` — Visual variant or style option.
+- `children` - Nested content or child elements.
+- `icon` - Optional prop.
+- `title` - Title or heading text.
+- `variant` - Visual variant or style option.
 
 ## Example
 

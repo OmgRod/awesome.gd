@@ -8,7 +8,7 @@ Render keyboard key labels in text.
 
 ## Props
 
-- `children` — Nested content or child elements.
+- `children` - Nested content or child elements.
 
 ## Example
 

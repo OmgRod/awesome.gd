@@ -21,13 +21,13 @@ It renders each question as a multiple-choice or text input prompt. When an answ
 
 ### Question object fields
 
-- `id` — unique question id
-- `type` — `mcq` or `input`
-- `prompt` — the question text
-- `options` — choice labels for `mcq`
-- `placeholder` — optional placeholder for `input`
-- `branchMap` — maps answers to branch ids
-- `required` — whether this question must be answered (defaults to `true`)
+- `id` - unique question id
+- `type` - `mcq` or `input`
+- `prompt` - the question text
+- `options` - choice labels for `mcq`
+- `placeholder` - optional placeholder for `input`
+- `branchMap` - maps answers to branch ids
+- `required` - whether this question must be answered (defaults to `true`)
 
 ### Branch definitions
 

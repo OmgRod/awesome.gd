@@ -8,11 +8,11 @@ Render a table or grid of guides with optional caption and filters.
 
 ## Props
 
-- `caption` — Optional caption text.
-- `guides: initialGuides` — Optional prop.
-- `subcategory` — Optional prop.
-- `subdirectory` — Optional prop.
-- `subdirectoryGuides: propGuides` — Optional prop.
+- `caption` - Optional caption text.
+- `guides: initialGuides` - Optional prop.
+- `subcategory` - Optional prop.
+- `subdirectory` - Optional prop.
+- `subdirectoryGuides: propGuides` - Optional prop.
 
 ## Example
 

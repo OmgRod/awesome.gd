@@ -8,9 +8,9 @@ Render a link with button styling for primary actions.
 
 ## Props
 
-- `children` — Nested content or child elements.
-- `href` — Destination URL for a link.
-- `variant` — Visual variant or style option.
+- `children` - Nested content or child elements.
+- `href` - Destination URL for a link.
+- `variant` - Visual variant or style option.
 
 ## Example
 

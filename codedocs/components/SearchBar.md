@@ -8,8 +8,8 @@ Render a document search input for filtering content.
 
 ## Props
 
-- `documents` — Optional prop.
-- `placeholder` — Placeholder behavior for inputs or image loading.
+- `documents` - Optional prop.
+- `placeholder` - Placeholder behavior for inputs or image loading.
 
 ## Example
 

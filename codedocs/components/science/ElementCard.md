@@ -4,13 +4,13 @@ Render a periodic table element summary card.
 
 ## Props
 
-- `atomicMass` — Optional prop.
-- `className` — Additional CSS classes to apply.
-- `group` — Optional prop.
-- `name` — Optional prop.
-- `number` — Optional prop.
-- `summary` — Optional prop.
-- `symbol` — Optional prop.
+- `atomicMass` - Optional prop.
+- `className` - Additional CSS classes to apply.
+- `group` - Optional prop.
+- `name` - Optional prop.
+- `number` - Optional prop.
+- `summary` - Optional prop.
+- `symbol` - Optional prop.
 
 ## Example
 

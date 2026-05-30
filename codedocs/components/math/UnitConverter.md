@@ -4,7 +4,7 @@ Render a unit conversion interface.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
+- `className` - Additional CSS classes to apply.
 
 ## Example
 

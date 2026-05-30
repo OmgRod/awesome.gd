@@ -8,9 +8,9 @@ Render a simple content card with title, description, and body.
 
 ## Props
 
-- `children` — Nested content or child elements.
-- `description` — Secondary descriptive text.
-- `title` — Title or heading text.
+- `children` - Nested content or child elements.
+- `description` - Secondary descriptive text.
+- `title` - Title or heading text.
 
 ## Example
 

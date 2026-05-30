@@ -4,8 +4,8 @@ Render the site footer from configuration data.
 
 ## Props
 
-- `footerConfig` — Footer configuration data.
-- `siteConfig` — Site configuration data.
+- `footerConfig` - Footer configuration data.
+- `siteConfig` - Site configuration data.
 
 ## Example
 

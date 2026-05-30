@@ -8,8 +8,8 @@ Render a list of formulas with names and expressions.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `items` — Array of items or content entries.
+- `className` - Additional CSS classes to apply.
+- `items` - Array of items or content entries.
 
 ## Example
 

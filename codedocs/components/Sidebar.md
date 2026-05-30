@@ -8,9 +8,9 @@ Render the site sidebar navigation.
 
 ## Props
 
-- `currentPath` — Current path used to mark the active item.
-- `sidebarConfig` — Sidebar navigation configuration.
-- `sidebarWidthClass` — CSS width utility for the sidebar.
+- `currentPath` - Current path used to mark the active item.
+- `sidebarConfig` - Sidebar navigation configuration.
+- `sidebarWidthClass` - CSS width utility for the sidebar.
 
 ## Example
 

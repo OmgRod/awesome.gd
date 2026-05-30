@@ -8,7 +8,7 @@ Use `<TabPanels>` with nested `<Tab title="...">` children to render tabbed cont
 
 ## Props
 
-- `children` — Nested content or child elements.
+- `children` - Nested content or child elements.
 
 ## Example
 

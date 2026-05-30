@@ -4,7 +4,7 @@ Render a horizontal divider with an optional centered label.
 
 ## Props
 
-- `label` — Optional prop.
+- `label` - Optional prop.
 
 ## Example
 

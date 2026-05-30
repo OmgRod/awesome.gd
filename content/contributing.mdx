@@ -164,6 +164,7 @@ description: [GUIDE DESCRIPTION]
 author: [YOUR USERNAME]
 editPage: true
 order: ORDER_NUMBER
+navigation: true
 ---
 
 # [GUIDE TITLE]
@@ -178,6 +179,7 @@ It is important that:
 3. Your username is the exact same as the one you put in `authors.json`.
 4. `editPage` is ALWAYS TRUE!
 5. `ORDER_NUMBER` must be a number. The higher the number, the further down it appears. It is completely optional and only recommended for subcategory guides.
+6. `navigation` must ALWAYS be `true`, to enable page navigation at the bottom of the guide page.
 
 Also, whenever you create a guide, you must add it to `sidebar.json`, like this:
 
@@ -206,6 +208,7 @@ In the JSON code above, there is an example for regular guides, and an example f
       - `/CATEGORY PATH/guides/guide-name`
     4. Do not create unnecessary nesting if the guide is standalone.
     5. Use lowercase, hyphen-separated file paths for consistency.
+    6. `navigation` must ALWAYS be `true`, to enable page navigation at the bottom of the guide page.
   </Tab>
   <Tab title="Subcategories">
     1. Subcategories are used for multi-part tutorials or structured learning paths.
@@ -215,13 +218,15 @@ In the JSON code above, there is an example for regular guides, and an example f
     4. All parts must live inside the same subcategory folder.
     5. Avoid mixing standalone guides and series content inside the same subcategory.
     6. The first part should clearly introduce the series and explain its purpose briefly.
+    7. `navigation` must ALWAYS be `true`, to enable page navigation at the bottom of the guide page.
   </Tab>
   <Tab title="General Rules">
     1. Keep titles short, descriptive, and consistent across sidebar and frontmatter.
-    2. Ensure every path matches an actual file — broken links are not allowed.
+    2. Ensure every path matches an actual file - broken links are not allowed.
     3. Never duplicate entries in the sidebar.
     4. If unsure where a guide belongs, default to a regular guide instead of creating a new subcategory.
     5. Keep the sidebar clean - prefer flat structure unless hierarchy is truly needed.
+    6. `navigation` must ALWAYS be `true`, to enable page navigation at the bottom of the guide page.
   </Tab>
 </TabPanels>
 

@@ -4,10 +4,10 @@ Render a heatmap chart from matrix data.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `data` — Data points used to render the component.
-- `xLabels` — Optional prop.
-- `yLabels` — Optional prop.
+- `className` - Additional CSS classes to apply.
+- `data` - Data points used to render the component.
+- `xLabels` - Optional prop.
+- `yLabels` - Optional prop.
 
 ## Example
 

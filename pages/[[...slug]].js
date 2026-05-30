@@ -165,10 +165,27 @@ function getOrderedSidebarPages(sidebarConfig) {
   return pages;
 }
 
-function buildPageNavigation({ sidebarConfig, currentPath, frontmatter }) {
-  const orderedPages = getOrderedSidebarPages(sidebarConfig);
+function buildPageNavigation({ currentPath, frontmatter, relativePath }) {
+  if (frontmatter?.navigation !== true) {
+    return null;
+  }
+
+  const dir = path.posix.dirname(relativePath);
+  const pages = getDirectoryPageMeta(dir, { exclude: ['index'] });
+
+  pages.sort((a, b) => {
+    const aOrder = typeof a.order === 'number' ? a.order : Infinity;
+    const bOrder = typeof b.order === 'number' ? b.order : Infinity;
+
+    if (aOrder !== bOrder) {
+      return aOrder - bOrder;
+    }
+
+    return a.title.localeCompare(b.title, undefined, { sensitivity: 'base' });
+  });
+
   const normalizedCurrentPath = normalizeRoutePath(currentPath);
-  const currentIndex = orderedPages.findIndex((page) => page.path === normalizedCurrentPath);
+  const currentIndex = pages.findIndex((page) => page.route === normalizedCurrentPath);
 
   if (currentIndex === -1) {
     return null;
@@ -177,10 +194,10 @@ function buildPageNavigation({ sidebarConfig, currentPath, frontmatter }) {
   const disablePrevPage = frontmatter?.disablePrevPage === true;
   const disableNextPage = frontmatter?.disableNextPage === true;
 
-  const previous = !disablePrevPage && currentIndex > 0 ? orderedPages[currentIndex - 1] : null;
+  const previous = !disablePrevPage && currentIndex > 0 ? pages[currentIndex - 1] : null;
   const next =
-    !disableNextPage && currentIndex < orderedPages.length - 1
-      ? orderedPages[currentIndex + 1]
+    !disableNextPage && currentIndex < pages.length - 1
+      ? pages[currentIndex + 1]
       : null;
 
   if (!previous && !next) {
@@ -188,8 +205,8 @@ function buildPageNavigation({ sidebarConfig, currentPath, frontmatter }) {
   }
 
   return {
-    previous,
-    next,
+    previous: previous ? { title: previous.title, path: previous.route } : null,
+    next: next ? { title: next.title, path: next.route } : null,
   };
 }
 
@@ -290,7 +307,7 @@ export default function WikiPage({
             <MDXRemote {...mdxSource} components={mdxComponents} />
           </GuidesContext.Provider>
 
-          {/* {pageNavigation?.previous || pageNavigation?.next ? (
+          {pageNavigation?.previous || pageNavigation?.next ? (
             <nav
               className="mt-10 border-t border-slate-200 pt-4 dark:border-slate-800"
               aria-label="Docs page navigation"
@@ -302,7 +319,7 @@ export default function WikiPage({
                     className="group rounded-lg border border-slate-200 px-4 py-3 transition hover:border-blue-300 hover:bg-blue-50/70 dark:border-slate-800 dark:hover:border-blue-600 dark:hover:bg-blue-950/30"
                   >
                     <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                      <Icon name="arrowleft" size={14} />
+                      <Icon name="ChevronLeft" size={14} />
                       <span>Previous</span>
                     </span>
                     <span className="block text-sm font-medium text-slate-900 group-hover:text-blue-700 dark:text-slate-100 dark:group-hover:text-blue-300">
@@ -318,7 +335,7 @@ export default function WikiPage({
                   >
                     <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 sm:justify-end">
                       <span>Next</span>
-                      <Icon name="arrowright" size={14} />
+                      <Icon name="ChevronRight" size={14} />
                     </span>
                     <span className="block text-sm font-medium text-slate-900 group-hover:text-blue-700 dark:text-slate-100 dark:group-hover:text-blue-300">
                       {pageNavigation.next.title}
@@ -327,7 +344,7 @@ export default function WikiPage({
                 ) : null}
               </div>
             </nav>
-          ) : null} */}
+          ) : null}
 
           {editPage?.url ? (
             <div className="mt-10 border-t border-slate-200 pt-4 dark:border-slate-800">
@@ -473,9 +490,9 @@ export async function getStaticProps({ params }) {
     frontmatter: data,
   });
   const pageNavigation = buildPageNavigation({
-    sidebarConfig,
     currentPath,
     frontmatter: data,
+    relativePath,
   });
 
   return {

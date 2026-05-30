@@ -8,9 +8,9 @@ Render a named icon from the shared icon set.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `name` — Optional prop.
-- `size` — Optional prop.
+- `className` - Additional CSS classes to apply.
+- `name` - Optional prop.
+- `size` - Optional prop.
 
 ## Example
 

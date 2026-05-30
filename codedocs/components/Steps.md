@@ -12,7 +12,7 @@ Use `items` or `<Step>` children to render a numbered list of steps.
 
 ## Props
 
-- `children` — Nested content or child elements.
+- `children` - Nested content or child elements.
 
 ## Example
 

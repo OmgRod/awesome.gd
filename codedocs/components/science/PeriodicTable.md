@@ -8,10 +8,10 @@ Render an interactive periodic table with highlighted elements.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `highlighted` — Values or symbols to highlight.
-- `includeSymbols` — Symbol list to include in the periodic table.
-- `showNames` — Whether to display element names.
+- `className` - Additional CSS classes to apply.
+- `highlighted` - Values or symbols to highlight.
+- `includeSymbols` - Symbol list to include in the periodic table.
+- `showNames` - Whether to display element names.
 
 ## Example
 

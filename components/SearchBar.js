@@ -110,17 +110,14 @@ export default function SearchBar({ documents = [], placeholder = 'Search docs..
 
   const modal = (
     <>
-      {/* Full-viewport dark backdrop — rendered directly in <body> via portal */}
       <div
         className="fixed inset-0 z-[200] bg-slate-900/60 backdrop-blur-sm"
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
       />
 
-      {/* Modal panel — above backdrop, pointer-events-none on wrapper lets backdrop capture clicks */}
       <div className="fixed inset-0 z-[201] flex items-start justify-center pointer-events-none pt-16 sm:pt-24 px-4">
         <div className="pointer-events-auto relative w-full max-w-xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl ring-1 ring-slate-900/5 dark:border-slate-800 dark:bg-slate-950 dark:ring-0 sm:rounded-2xl">
-          {/* Search input row */}
           <div className="flex items-center border-b border-slate-200 px-4 dark:border-slate-800">
             <Icon name="Search" size={20} className="text-slate-500 dark:text-slate-400" />
             <input
@@ -139,7 +136,6 @@ export default function SearchBar({ documents = [], placeholder = 'Search docs..
             </button>
           </div>
 
-          {/* No results */}
           {query && matches.length === 0 ? (
             <div className="px-6 py-14 text-center text-sm text-slate-500 dark:text-slate-400">
               No results found for{' '}
@@ -150,7 +146,6 @@ export default function SearchBar({ documents = [], placeholder = 'Search docs..
             </div>
           ) : null}
 
-          {/* Results list */}
           {matches.length > 0 ? (
             <ul className="max-h-[60vh] overflow-y-auto p-2">
               {matches.map((match) => (
@@ -194,7 +189,6 @@ export default function SearchBar({ documents = [], placeholder = 'Search docs..
 
   return (
     <>
-      {/* Trigger button shown in the header */}
       <button
         type="button"
         onClick={() => setIsOpen(true)}
@@ -207,7 +201,6 @@ export default function SearchBar({ documents = [], placeholder = 'Search docs..
         </kbd>
       </button>
 
-      {/* Portal: modal is injected directly into <body>, not inside the header */}
       {mounted && isOpen ? createPortal(modal, document.body) : null}
     </>
   );

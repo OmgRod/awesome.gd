@@ -8,9 +8,9 @@ Render a styled alert box for informative, warning, or error messages.
 
 ## Props
 
-- `children` — Nested content or child elements.
-- `title` — Title or heading text.
-- `type` — Optional prop.
+- `children` - Nested content or child elements.
+- `title` - Title or heading text.
+- `type` - Optional prop.
 
 ## Example
 

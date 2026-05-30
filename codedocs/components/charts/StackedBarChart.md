@@ -4,10 +4,10 @@ Render a stacked bar chart for grouped data.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `data` — Data points used to render the component.
-- `series` — Optional prop.
-- `showLegend` — Whether to render a chart legend.
+- `className` - Additional CSS classes to apply.
+- `data` - Data points used to render the component.
+- `series` - Optional prop.
+- `showLegend` - Whether to render a chart legend.
 
 ## Example
 

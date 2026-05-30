@@ -8,9 +8,9 @@ Render a quiz with questions, options, and scoring.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `questions` — Array of question definitions.
-- `showScore` — Whether to show the quiz score after completion.
+- `className` - Additional CSS classes to apply.
+- `questions` - Array of question definitions.
+- `showScore` - Whether to show the quiz score after completion.
 
 ## Example
 

@@ -8,11 +8,11 @@ Render an informational box with optional image and item list.
 
 ## Props
 
-- `image` — Image source URL or image data.
-- `imageAlt` — Alternative text for the info box image.
-- `imageCaption` — Caption text for the info box image.
-- `items` — Array of items or content entries.
-- `title` — Title or heading text.
+- `image` - Image source URL or image data.
+- `imageAlt` - Alternative text for the info box image.
+- `imageCaption` - Caption text for the info box image.
+- `items` - Array of items or content entries.
+- `title` - Title or heading text.
 
 ## Example
 

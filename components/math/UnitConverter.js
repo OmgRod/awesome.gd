@@ -17,7 +17,7 @@ export default function UnitConverter({ className = '' }) {
   const converted = useMemo(() => {
     const numericValue = Number(value);
     if (!Number.isFinite(numericValue)) {
-      return '—';
+      return '-';
     }
 
     const meters = numericValue * LENGTH_UNITS[from].factor;

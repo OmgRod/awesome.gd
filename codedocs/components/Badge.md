@@ -8,8 +8,8 @@ Render a compact inline badge for labels and statuses.
 
 ## Props
 
-- `children` — Nested content or child elements.
-- `variant` — Visual variant or style option.
+- `children` - Nested content or child elements.
+- `variant` - Visual variant or style option.
 
 ## Example
 

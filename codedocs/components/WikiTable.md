@@ -12,8 +12,8 @@ Build tables with the exported `<Table>` helpers in MDX content.
 
 ## Props
 
-- `children` — Nested content or child elements.
-- `className` — Additional CSS classes to apply.
+- `children` - Nested content or child elements.
+- `className` - Additional CSS classes to apply.
 
 ## Example
 

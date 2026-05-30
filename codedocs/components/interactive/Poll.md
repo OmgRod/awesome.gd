@@ -8,9 +8,9 @@ Render a poll component with a question and choices.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `options` — Optional prop.
-- `question` — Text for a poll or quiz question.
+- `className` - Additional CSS classes to apply.
+- `options` - Optional prop.
+- `question` - Text for a poll or quiz question.
 
 ## Example
 

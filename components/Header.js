@@ -144,7 +144,6 @@ export default function Header({ headerConfig, searchDocuments, siteConfig }) {
             {!showLogo && !showText ? <span>{siteName}</span> : null}
           </Link>
 
-          {/* Desktop nav links — scrollable horizontally, dropdowns escape via portal */}
           <div className="ml-auto hidden min-w-0 flex-1 md:block">
             <div className="flex items-center gap-2 whitespace-nowrap overflow-x-auto scrollbar-simple pb-1">
               {links.map((link) => {
@@ -349,7 +348,6 @@ export default function Header({ headerConfig, searchDocuments, siteConfig }) {
         </div>
       ) : null}
 
-      {/* Dropdown panels rendered into document.body — immune to overflow clipping */}
       {dropdownPortal}
     </header>
   );

@@ -8,9 +8,9 @@ Render the top site header and navigation.
 
 ## Props
 
-- `headerConfig` — Header configuration data.
-- `searchDocuments` — Documents used as search targets.
-- `siteConfig` — Site configuration data.
+- `headerConfig` - Header configuration data.
+- `searchDocuments` - Documents used as search targets.
+- `siteConfig` - Site configuration data.
 
 ## Example
 

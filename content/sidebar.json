@@ -24,6 +24,9 @@
       "items": [
         { "title": "Table of Contents", "path": "/geode/index" },
         { "title": "Official Guides", "path": "/geode/guides/index" },
+        { "title": "End User", "collapsible": true, "items": [
+          { "title": "Installing Geode on iOS", "path": "/geode/guides/enduser/ios" }
+        ]},
         { "title": "Fangame Guide", "collapsible": true, "items": [
           { "title": "1: Custom Levels", "path": "/geode/guides/fangame/chap1" },
           { "title": "2: Adding Song Credits", "path": "/geode/guides/fangame/chap2" }

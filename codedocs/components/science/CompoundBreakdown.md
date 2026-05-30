@@ -4,9 +4,9 @@ Render a breakdown of a chemical compound by formula and parts.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `formula` — Optional prop.
-- `parts` — Optional prop.
+- `className` - Additional CSS classes to apply.
+- `formula` - Optional prop.
+- `parts` - Optional prop.
 
 ## Example
 

@@ -4,8 +4,8 @@ Render interactive flashcards for review content.
 
 ## Props
 
-- `cards` — Optional prop.
-- `className` — Additional CSS classes to apply.
+- `cards` - Optional prop.
+- `className` - Additional CSS classes to apply.
 
 ## Example
 

@@ -8,8 +8,8 @@ Render a sequence of math solution steps.
 
 ## Props
 
-- `className` — Additional CSS classes to apply.
-- `steps` — Optional prop.
+- `className` - Additional CSS classes to apply.
+- `steps` - Optional prop.
 
 ## Example
 

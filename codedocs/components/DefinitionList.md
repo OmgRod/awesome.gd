@@ -4,7 +4,7 @@ Render a term/definition list from an array of items.
 
 ## Props
 
-- `items` — Array of items or content entries.
+- `items` - Array of items or content entries.
 
 ## Example
 

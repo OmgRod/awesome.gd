@@ -4,8 +4,8 @@ Render an expandable accordion list from either an `items` array or nested `<Acc
 
 ## Props
 
-- `items` — An array of accordion entries with `id`, `title`, and `children` or `content`.
-- `children` — Nested `<Accordion.Item>` components for MDX-style accordion content.
+- `items` - An array of accordion entries with `id`, `title`, and `children` or `content`.
+- `children` - Nested `<Accordion.Item>` components for MDX-style accordion content.
 
 ## Notes
 

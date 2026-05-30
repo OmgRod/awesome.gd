@@ -4,8 +4,8 @@ Render a styled code block for code examples.
 
 ## Props
 
-- `children` — Nested content or child elements.
-- `className` — Additional CSS classes to apply.
+- `children` - Nested content or child elements.
+- `className` - Additional CSS classes to apply.
 
 ## Example
 

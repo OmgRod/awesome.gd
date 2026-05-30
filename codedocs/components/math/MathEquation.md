@@ -8,9 +8,9 @@ Render a math expression using KaTeX.
 
 ## Props
 
-- `block` — Optional prop.
-- `className` — Additional CSS classes to apply.
-- `expression` — Optional prop.
+- `block` - Optional prop.
+- `className` - Additional CSS classes to apply.
+- `expression` - Optional prop.
 
 ## Example
 
