@@ -17,6 +17,8 @@ export default function AuthorList() {
           name={author.name || username}
           avatar={author.avatar}
           url={author.url}
+          role={author.role}
+          contributions={author.contributions}
           showLabel={false}
         />
       ))}

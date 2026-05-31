@@ -2,11 +2,15 @@
   "OmgRod": {
     "name": "OmgRod",
     "avatar": "/assets/avatars/OmgRod.png",
-    "url": "https://github.com/OmgRod"
+    "url": "https://github.com/OmgRod",
+    "role": "Owner",
+    "contributions": "Maintained the list and developed the initial site."
   },
   "Geode Team": {
     "name": "Geode Team",
     "avatar": "/assets/avatars/geode-sdk.png",
-    "url": "https://github.com/geode-sdk"
+    "url": "https://github.com/geode-sdk",
+    "role": "Verified",
+    "contributions": "Created the Geode SDK and its ecosystem."
   }
 }

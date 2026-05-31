@@ -92,7 +92,7 @@ function renderAuthorCardSnippet(authorData) {
     return '';
   }
 
-  return ['username', 'name', 'avatar', 'url']
+  return ['username', 'name', 'avatar', 'url', 'role']
     .filter((key) => authorData[key])
     .map((key) => `${key}="${String(authorData[key]).replace(/"/g, '&quot;')}"`)
     .join(' ');
@@ -408,6 +408,7 @@ export async function getStaticProps({ params }) {
           name: authorMeta.name || data.author,
           avatar: authorMeta.avatar,
           url: authorMeta.url,
+          role: authorMeta.role,
         };
       } else {
         author = { username: data.author, name: data.author };

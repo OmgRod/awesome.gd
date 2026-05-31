@@ -7,7 +7,7 @@
     "predev": "node scripts/generate-seo-files.js",
     "prestart": "node scripts/generate-seo-files.js",
     "prebuild": "node scripts/generate-seo-files.js",
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
